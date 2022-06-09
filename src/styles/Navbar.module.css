@@ -1,0 +1,18 @@
+.navbar{
+    padding: .7em 1.5em;
+    background-color: rgb(85, 85, 255);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: white;
+    padding: .3em 1em;
+    border-radius: 20px;
+}
+.registerBtn{
+    background-color: white;
+    color: rgb(85, 85, 255);
+}

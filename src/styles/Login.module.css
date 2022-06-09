@@ -1,0 +1,13 @@
+:global(.container).login{
+    margin-top: 10em;
+    padding: 2em;
+    border-radius: .75em;
+    border: 1px solid grey;
+    box-shadow: 1px 1px 10px 1px lightgray;
+}
+.loginBtn{
+    margin-top: 1em;
+}
+.h2{
+    text-align: start;
+}
