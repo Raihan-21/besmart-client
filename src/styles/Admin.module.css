@@ -1,0 +1,13 @@
+.adminContainer{
+    margin: 50px 0 50px 200px;
+}
+.adminContainer h3{
+    text-align: start;
+    margin-bottom: 25px;
+}
+.tabelMurid{
+    padding: 0 5%;
+}
+.tabelMurid .actionBtn{
+    margin-right: 5px;
+}

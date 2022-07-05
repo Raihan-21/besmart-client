@@ -12,7 +12,8 @@ const AdminLogin = () => {
         password: formData.password,
       }),
     });
-    console.log(res);
+    const data = await res.json();
+    if (!data.error) console.log(data.match);
   }, [formData]);
   return (
     <div className={`container ${styles.login}`}>

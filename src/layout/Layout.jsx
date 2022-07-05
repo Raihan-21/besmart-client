@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import AdminNavbar from "../components/AdminNavbar";
+import AdminSidebar from "../components/AdminSidebar";
 import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
@@ -14,7 +15,10 @@ const AdminLayout = () => {
   return (
     <div>
       <AdminNavbar />
-      <Outlet />
+      <div>
+        <AdminSidebar />
+        <Outlet />
+      </div>
     </div>
   );
 };
