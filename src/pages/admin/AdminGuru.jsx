@@ -7,7 +7,7 @@ import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
-import style from "../styles/Admin.module.css";
+import style from "../../styles/Admin.module.css";
 const AdminGuru = () => {
   const [data, setData] = useState([]);
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { TextField, Button } from "@mui/material";
-import styles from "../styles/Login.module.css";
+import styles from "../../styles/Admin.module.css";
 import { useState, useCallback } from "react";
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });

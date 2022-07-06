@@ -3,12 +3,12 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AdminLogin from "./pages/AdminLogin";
 import { AdminLayout, MainLayout } from "./layout/Layout";
 import Home from "./pages/Home";
-import AdminMurid from "./pages/AdminMurid";
-import AdminDashboard from "./pages/AdminDashboard";
-import AdminGuru from "./pages/AdminGuru";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminMurid from "./pages/admin/AdminMurid";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminGuru from "./pages/admin/AdminGuru";
 
 function App() {
   const theme = createTheme({

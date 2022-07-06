@@ -7,7 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
-import style from "../styles/Admin.module.css";
+import style from "../../styles/Admin.module.css";
 const AdminMurid = () => {
   const [murid, setMurid] = useState([]);
   useEffect(() => {
