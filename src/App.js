@@ -9,6 +9,7 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminMurid from "./pages/admin/AdminMurid";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminGuru from "./pages/admin/AdminGuru";
+import EditGuru from "./pages/admin/EditGuru";
 
 function App() {
   const theme = createTheme({
@@ -31,6 +32,7 @@ function App() {
               <Route path="login" element={<AdminLogin />} />
               <Route path="murid" element={<AdminMurid />} />
               <Route path="guru" element={<AdminGuru />} />
+              <Route path="guru/:id" element={<EditGuru />} />
             </Route>
           </Routes>
         </div>

@@ -5,9 +5,19 @@
     text-align: start;
     margin-bottom: 25px;
 }
-.tabelAdmin{
+.tabelAdmin, .editAdmin{
     padding: 0 5%;
 }
 .tabelAdmin .actionBtn{
     margin-right: 5px;
+}
+.editAdmin form{
+    box-shadow: 0px 1px 5px 1px rgb(190, 190, 190);
+    border-radius: 10px;
+    padding: 20px;
+}
+.editAdmin .inputs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
