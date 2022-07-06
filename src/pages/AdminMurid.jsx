@@ -19,7 +19,7 @@ const AdminMurid = () => {
     getData();
   }, []);
   return (
-    <div className={`${style.adminContainer} ${style.tabelMurid}`}>
+    <div className={`${style.adminContainer} ${style.tabelAdmin}`}>
       <h3>Murid</h3>
       <TableContainer component={Paper}>
         <Table>
@@ -59,25 +59,6 @@ const AdminMurid = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>No Hp</th>
-          </tr>
-        </thead>
-        <tbody>
-          {murid &&
-            murid.map((item) => (
-              <tr>
-                <td>{item.nama}</td>
-                <td>{item.alamat}</td>
-                <td>{item.no_hp}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table> */}
     </div>
   );
 };
