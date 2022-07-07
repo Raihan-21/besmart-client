@@ -4,9 +4,9 @@ import { useCallback } from "react";
 import useFetchDetail from "../../hooks/useFetchDetail";
 import { useParams } from "react-router-dom";
 import styles from "../../styles/Admin.module.css";
-const EditGuru = () => {
+const EditMurid = () => {
   const params = useParams();
-  const [data, isLoading] = useFetchDetail(`/admin/guru/${params.id}`);
+  const [data, isLoading] = useFetchDetail(`/admin/murid/${params.id}`);
   const [formData, setFormData] = useState({
     username: "",
     nama: "",
@@ -27,13 +27,15 @@ const EditGuru = () => {
   const formSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      const res = await fetch(`/admin/guru/${params.id}`, {
+      const res = await fetch(`/admin/murid/${params.id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const resData = await res.json();
-      console.log(resData.data);
+      if (resData.error) {
+        console.log(resData.error);
+      }
     },
     [formData, params.id]
   );
@@ -41,7 +43,7 @@ const EditGuru = () => {
     <div
       className={`${styles.adminContainer} ${styles.editAdmin} ${styles.guru}`}
     >
-      <h3>Edit Guru</h3>
+      <h3>Edit Murid</h3>
       {!isLoading && (
         <form onSubmit={formSubmit}>
           <div className={styles.inputs}>
@@ -103,4 +105,4 @@ const EditGuru = () => {
   );
 };
 
-export default EditGuru;
+export default EditMurid;

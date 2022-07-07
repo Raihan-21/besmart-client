@@ -20,4 +20,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
+}
+.editAdmin .inputs .input{
+    width: 48% !important;
+}
+.editAdmin.guru form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 10px;
 }

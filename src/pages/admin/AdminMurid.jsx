@@ -8,6 +8,7 @@ import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import style from "../../styles/Admin.module.css";
+import { Link } from "react-router-dom";
 const AdminMurid = () => {
   const [murid, setMurid] = useState([]);
   useEffect(() => {
@@ -39,13 +40,15 @@ const AdminMurid = () => {
                   <TableCell>{item.alamat}</TableCell>
                   <TableCell>{item.no_hp}</TableCell>
                   <TableCell>
-                    <Button
-                      className={style.actionBtn}
-                      color="primary"
-                      variant="contained"
-                    >
-                      Edit
-                    </Button>
+                    <Link to={item.username}>
+                      <Button
+                        className={style.actionBtn}
+                        color="primary"
+                        variant="contained"
+                      >
+                        Edit
+                      </Button>
+                    </Link>
                     <Button
                       className={style.actionBtn}
                       color="error"
