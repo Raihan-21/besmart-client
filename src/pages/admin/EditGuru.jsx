@@ -39,7 +39,7 @@ const EditGuru = () => {
   );
   return (
     <div
-      className={`${styles.adminContainer} ${styles.editAdmin} ${styles.guru}`}
+      className={`${styles.adminContainer} ${styles.formAdmin} ${styles.guru}`}
     >
       <h3>Edit Guru</h3>
       {!isLoading && (
