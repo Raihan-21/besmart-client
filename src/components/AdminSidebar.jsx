@@ -5,8 +5,13 @@ const AdminSidebar = () => {
   const [activeTab, setActiveTab] = useState("");
   const location = useLocation();
   useEffect(() => {
+    const menus = ["dashboard", "murid", "guru"];
     const route = location.pathname.split("/");
-    setActiveTab(route[route.length - 1]);
+    route.forEach((path) => {
+      menus.forEach((menu) => {
+        if (menu === path) setActiveTab(menu);
+      });
+    });
   }, [location.pathname]);
   return (
     <div className={style.sidebar}>
