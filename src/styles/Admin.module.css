@@ -5,6 +5,10 @@
     text-align: start;
     margin-bottom: 25px;
 }
+.adminContainer .heading{
+    display: flex;
+    justify-content: space-between;
+}
 .tabelAdmin, .formAdmin{
     padding: 0 5%;
 }

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
@@ -7,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
-import style from "../../styles/Admin.module.css";
+import style from "../../../styles/Admin.module.css";
 import { Link } from "react-router-dom";
 const AdminMurid = () => {
   const [murid, setMurid] = useState([]);
@@ -19,9 +20,31 @@ const AdminMurid = () => {
     };
     getData();
   }, []);
+  const navigate = useNavigate();
+  const deleteHandler = useCallback(
+    async (username) => {
+      const res = await fetch(`/admin/murid/${username}`, {
+        method: "DELETE",
+      });
+      const resData = await res.json();
+      if (resData.error) {
+        console.log(resData.error);
+        return;
+      }
+      navigate(0);
+    },
+    [navigate]
+  );
   return (
     <div className={`${style.adminContainer} ${style.tabelAdmin}`}>
-      <h3>Murid</h3>
+      <div className={style.heading}>
+        <h3>Murid</h3>
+        <Link to="/admin/murid/tambah">
+          <Button color="secondary" variant="outlined">
+            Tambah
+          </Button>
+        </Link>
+      </div>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -53,6 +76,9 @@ const AdminMurid = () => {
                       className={style.actionBtn}
                       color="error"
                       variant="contained"
+                      onClick={() => {
+                        deleteHandler(item.username);
+                      }}
                     >
                       Hapus
                     </Button>

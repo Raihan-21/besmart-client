@@ -6,11 +6,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AdminLayout, MainLayout } from "./layout/Layout";
 import Home from "./pages/Home";
 import AdminLogin from "./pages/admin/AdminLogin";
-import AdminMurid from "./pages/admin/AdminMurid";
+import AdminMurid from "./pages/admin/murid/AdminMurid";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminGuru from "./pages/admin/AdminGuru";
 import EditGuru from "./pages/admin/EditGuru";
-import EditMurid from "./pages/admin/EditMurid";
+import EditMurid from "./pages/admin/murid/EditMurid";
+import AddMurid from "./pages/admin/murid/AddMurid";
 
 function App() {
   const theme = createTheme({
@@ -32,6 +33,7 @@ function App() {
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="login" element={<AdminLogin />} />
               <Route path="murid" element={<AdminMurid />} />
+              <Route path="murid/tambah" element={<AddMurid />} />
               <Route path="murid/:id" element={<EditMurid />} />
               <Route path="guru" element={<AdminGuru />} />
               <Route path="guru/:id" element={<EditGuru />} />

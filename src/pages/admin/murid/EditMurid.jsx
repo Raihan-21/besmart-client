@@ -1,7 +1,7 @@
 import { useCallback } from "react";
-import useFetchDetail from "../../hooks/useFetchDetail";
+import useFetchDetail from "../../../hooks/useFetchDetail";
 import { useParams } from "react-router-dom";
-import styles from "../../styles/Admin.module.css";
+import styles from "../../../styles/Admin.module.css";
 import FormMurid from "./FormMurid";
 const EditMurid = () => {
   const params = useParams();

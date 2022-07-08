@@ -1,4 +1,4 @@
-import styles from "../../styles/Admin.module.css";
+import styles from "../../../styles/Admin.module.css";
 import { Button, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 const FormMurid = ({ formData, onSubmit }) => {
@@ -20,7 +20,7 @@ const FormMurid = ({ formData, onSubmit }) => {
             variant="outlined"
             margin="normal"
             className={styles.input}
-            value={data.username || ""}
+            value={data ? (data.username ? data.username : "") : ""}
             onChange={(e) => {
               setData((prevState) => {
                 return { ...prevState, username: e.target.value };
@@ -32,7 +32,7 @@ const FormMurid = ({ formData, onSubmit }) => {
             variant="outlined"
             margin="normal"
             className={styles.input}
-            value={data.nama || ""}
+            value={data ? (data.nama ? data.nama : "") : ""}
             onChange={(e) => {
               setData((prevState) => {
                 return { ...prevState, nama: e.target.value };
@@ -44,7 +44,7 @@ const FormMurid = ({ formData, onSubmit }) => {
             variant="outlined"
             margin="normal"
             className={styles.input}
-            value={data.alamat || ""}
+            value={data ? (data.alamat ? data.alamat : "") : ""}
             onChange={(e) => {
               setData((prevState) => {
                 return { ...prevState, alamat: e.target.value };
@@ -56,10 +56,10 @@ const FormMurid = ({ formData, onSubmit }) => {
             variant="outlined"
             margin="normal"
             className={styles.input}
-            value={data.noHp || ""}
+            value={data ? (data.no_hp ? data.no_hp : "") : ""}
             onChange={(e) => {
               setData((prevState) => {
-                return { ...prevState, noHp: e.target.value };
+                return { ...prevState, no_hp: e.target.value };
               });
             }}
           />
