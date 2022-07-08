@@ -40,7 +40,7 @@ const AdminMurid = () => {
       <div className={style.heading}>
         <h3>Murid</h3>
         <Link to="/admin/murid/tambah">
-          <Button color="secondary" variant="outlined">
+          <Button color="secondary" variant="contained">
             Tambah
           </Button>
         </Link>
