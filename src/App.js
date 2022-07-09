@@ -13,6 +13,9 @@ import EditGuru from "./pages/admin/guru/EditGuru";
 import EditMurid from "./pages/admin/murid/EditMurid";
 import AddMurid from "./pages/admin/murid/AddMurid";
 import AddGuru from "./pages/admin/guru/AddGuru";
+import AdminNews from "./pages/admin/news/AdminNews";
+import EditNews from "./pages/admin/news/EditNews";
+import AddNews from "./pages/admin/news/AddNews";
 
 function App() {
   const theme = createTheme({
@@ -39,6 +42,9 @@ function App() {
               <Route path="guru" element={<AdminGuru />} />
               <Route path="guru/tambah" element={<AddGuru />} />
               <Route path="guru/:id" element={<EditGuru />} />
+              <Route path="berita" element={<AdminNews />} />
+              <Route path="berita/tambah" element={<AddNews />} />
+              <Route path="berita/:slug" element={<EditNews />} />
             </Route>
           </Routes>
         </div>

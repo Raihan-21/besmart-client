@@ -7,6 +7,7 @@ import TableBody from "@mui/material/TableBody";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
+import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
 import style from "../../../styles/Admin.module.css";
 import { Link } from "react-router-dom";
@@ -45,19 +46,19 @@ const AdminMurid = () => {
           </Button>
         </Link>
       </div>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Nama</TableCell>
-              <TableCell>Alamat</TableCell>
-              <TableCell>No hp</TableCell>
-              <TableCell>Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {murid &&
-              murid.map((item, i) => (
+      {murid ? (
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Nama</TableCell>
+                <TableCell>Alamat</TableCell>
+                <TableCell>No hp</TableCell>
+                <TableCell>Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {murid.map((item, i) => (
                 <TableRow key={i}>
                   <TableCell>{item.nama}</TableCell>
                   <TableCell>{item.alamat}</TableCell>
@@ -85,9 +86,12 @@ const AdminMurid = () => {
                   </TableCell>
                 </TableRow>
               ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <CircularProgress />
+      )}
     </div>
   );
 };

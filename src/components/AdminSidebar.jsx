@@ -5,7 +5,7 @@ const AdminSidebar = () => {
   const [activeTab, setActiveTab] = useState("");
   const location = useLocation();
   useEffect(() => {
-    const menus = ["dashboard", "murid", "guru"];
+    const menus = ["dashboard", "murid", "guru", "berita"];
     const route = location.pathname.split("/");
     route.forEach((path) => {
       menus.forEach((menu) => {
@@ -41,6 +41,15 @@ const AdminSidebar = () => {
         }}
       >
         Guru
+      </Link>
+      <Link
+        to="/admin/berita"
+        className={activeTab === "berita" ? style.active : ""}
+        onClick={() => {
+          setActiveTab("berita");
+        }}
+      >
+        Berita
       </Link>
     </div>
   );
