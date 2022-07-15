@@ -35,3 +35,6 @@
     align-items: flex-start;
     row-gap: 10px;
 }
+.editor{
+    width: 50%;
+}
