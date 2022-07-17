@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import styles from "../styles/Navbar.module.css";
 const AdminNavbar = () => {
@@ -5,6 +6,7 @@ const AdminNavbar = () => {
     <div className={styles.adminNavbar}>
       <Link to="/">
         <h3>Admin</h3>
+        <Button>Logout</Button>
       </Link>
       <div></div>
     </div>
