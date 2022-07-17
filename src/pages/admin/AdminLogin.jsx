@@ -1,23 +1,15 @@
 import { TextField, Button } from "@mui/material";
 import styles from "../../styles/Admin.module.css";
 import { useState, useCallback } from "react";
+import axios from "axios";
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const login = useCallback(async () => {
     try {
-      const res = await fetch("/admin/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: formData.username,
-          password: formData.password,
-        }),
-      });
-      const data = await res.json();
-      console.log(data);
-      // if (!data.error) console.log(data.match);
+      const res = await axios.post("/admin/login", formData);
+      console.log(res.data);
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
   }, [formData]);
   return (

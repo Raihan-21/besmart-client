@@ -1,11 +1,11 @@
 import { useCallback } from "react";
-import useFetchDetail from "../../../hooks/useFetchDetail";
+import useFetch from "../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import styles from "../../../styles/Admin.module.css";
 import FormNews from "./FormNews";
 const EditNews = () => {
   const params = useParams();
-  const [data, isLoading] = useFetchDetail(`/admin/berita/${params.slug}`);
+  const [data, isLoading] = useFetch(`/admin/berita/${params.slug}`);
   const formSubmit = useCallback(
     async (data) => {
       const res = await fetch(`/admin/berita/${params.slug}`, {

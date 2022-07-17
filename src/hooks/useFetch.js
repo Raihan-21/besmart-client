@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import axios from "axios";
 const useFetch = (api) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -7,9 +7,9 @@ const useFetch = (api) => {
     const getData = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(api);
-        const resData = await res.json();
-        setData(resData.data);
+        const res = await axios.get(api);
+        // const resData = await res.json();
+        setData(res.data.data);
       } catch (error) {
       } finally {
         setIsLoading(false);

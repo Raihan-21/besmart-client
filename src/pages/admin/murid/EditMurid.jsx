@@ -1,11 +1,11 @@
 import { useCallback } from "react";
-import useFetchDetail from "../../../hooks/useFetchDetail";
+import useFetch from "../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
 import styles from "../../../styles/Admin.module.css";
 import FormMurid from "./FormMurid";
 const EditMurid = () => {
   const params = useParams();
-  const [data, isLoading] = useFetchDetail(`/admin/murid/${params.id}`);
+  const [data, isLoading] = useFetch(`/admin/murid/${params.id}`);
   const formSubmit = useCallback(
     async (data) => {
       const res = await fetch(`/admin/murid/${params.id}`, {
