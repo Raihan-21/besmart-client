@@ -4,16 +4,21 @@ import { useState, useCallback } from "react";
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const login = useCallback(async () => {
-    const res = await fetch("/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: formData.username,
-        password: formData.password,
-      }),
-    });
-    const data = await res.json();
-    if (!data.error) console.log(data.match);
+    try {
+      const res = await fetch("/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+        }),
+      });
+      const data = await res.json();
+      console.log(data);
+      // if (!data.error) console.log(data.match);
+    } catch (error) {
+      console.log(error);
+    }
   }, [formData]);
   return (
     <div className={`container ${styles.login}`}>
