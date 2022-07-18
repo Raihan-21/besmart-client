@@ -1,23 +1,29 @@
 import { TextField, Button } from "@mui/material";
 import styles from "../../styles/Admin.module.css";
-import { useState, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { login } from "../../slices/authSlice";
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState({});
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (loggedIn) navigate("/admin/dashboard");
+  }, [navigate, loggedIn]);
   const loginHandler = useCallback(
     async (e) => {
       e.preventDefault();
       try {
         // eslint-disable-next-line
         const res = await axios.post("/admin/login", formData);
+
         setError({});
         dispatch(login());
+        localStorage.setItem("user", res.data.data.username);
         navigate("/admin/dashboard");
       } catch (error) {
         setError(error.response.data);

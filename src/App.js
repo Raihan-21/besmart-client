@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { AdminLayout, MainLayout } from "./layout/Layout";
+import { AdminBlankLayout, AdminLayout, MainLayout } from "./layout/Layout";
 import Home from "./pages/Home";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminMurid from "./pages/admin/murid/AdminMurid";
@@ -35,7 +35,6 @@ function App() {
             </Route>
             <Route path="/admin/" element={<AdminLayout />}>
               <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="login" element={<AdminLogin />} />
               <Route path="murid" element={<AdminMurid />} />
               <Route path="murid/tambah" element={<AddMurid />} />
               <Route path="murid/:id" element={<EditMurid />} />
@@ -45,6 +44,9 @@ function App() {
               <Route path="berita" element={<AdminNews />} />
               <Route path="berita/tambah" element={<AddNews />} />
               <Route path="berita/:slug" element={<EditNews />} />
+            </Route>
+            <Route path="/admin/" element={<AdminBlankLayout />}>
+              <Route path="login" element={<AdminLogin />} />
             </Route>
           </Routes>
         </div>

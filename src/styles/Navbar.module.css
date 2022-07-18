@@ -24,6 +24,9 @@ a{
 .adminNavbar a{
     color: rgb(85, 85, 255);
 }
+.fullNav{
+    margin-left: 0;
+}
 .sidebar{
     position: fixed;
     top: 0;
