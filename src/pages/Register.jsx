@@ -1,6 +1,6 @@
 import { TextField, Button } from "@mui/material";
 import { useState, useCallback } from "react";
-import styles from "../styles/Register.module.css";
+import styles from "../assets/styles/Register.module.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });

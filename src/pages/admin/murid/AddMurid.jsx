@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../styles/Admin.module.css";
+import styles from "../../../assets/styles/Admin.module.css";
 import FormMurid from "./FormMurid";
 const AddMurid = () => {
   const navigate = useNavigate();

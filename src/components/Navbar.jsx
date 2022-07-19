@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/Navbar.module.css";
+import styles from "../assets/styles/Navbar.module.css";
 const Navbar = () => {
   const [counter, setCounter] = useState(0);
   return (

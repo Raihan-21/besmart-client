@@ -1,4 +1,4 @@
-import styles from "../../../styles/Admin.module.css";
+import styles from "../../../assets/styles/Admin.module.css";
 import { Button, TextField } from "@mui/material";
 import { useState, useEffect, useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
@@ -11,7 +11,7 @@ import { Editor } from "@tinymce/tinymce-react";
 // import { Editor } from "react-draft-wysiwyg";
 // import draftToHtml from "draftjs-to-html";
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-// import "../../../styles/RichText.css";
+// import "../../../assets/styles/RichText.css";
 
 // const html = "<div><h2>hello</h2></div>";
 // const blocksFromHTML = convertFromHTML(html);

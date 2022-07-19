@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import style from "../styles/Navbar.module.css";
+import style from "../assets/styles/Navbar.module.css";
 const AdminSidebar = () => {
   const [activeTab, setActiveTab] = useState("");
   const location = useLocation();

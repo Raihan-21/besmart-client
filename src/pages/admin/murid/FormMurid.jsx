@@ -1,4 +1,4 @@
-import styles from "../../../styles/Admin.module.css";
+import styles from "../../../assets/styles/Admin.module.css";
 import { Button, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 const FormMurid = ({ formData, onSubmit }) => {

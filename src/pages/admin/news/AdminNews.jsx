@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "../../../styles/Admin.module.css";
+import style from "../../../assets/styles/Admin.module.css";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
 const AdminNews = () => {

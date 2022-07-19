@@ -16,6 +16,7 @@ import AddGuru from "./pages/admin/guru/AddGuru";
 import AdminNews from "./pages/admin/news/AdminNews";
 import EditNews from "./pages/admin/news/EditNews";
 import AddNews from "./pages/admin/news/AddNews";
+import Protected from "./components/Protected";
 
 function App() {
   const theme = createTheme({
@@ -33,7 +34,14 @@ function App() {
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
             </Route>
-            <Route path="/admin/" element={<AdminLayout />}>
+            <Route
+              path="/admin/"
+              element={
+                <Protected>
+                  <AdminLayout />
+                </Protected>
+              }
+            >
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="murid" element={<AdminMurid />} />
               <Route path="murid/tambah" element={<AddMurid />} />

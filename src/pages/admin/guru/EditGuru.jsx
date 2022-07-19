@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import useFetch from "../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import styles from "../../../styles/Admin.module.css";
+import styles from "../../../assets/styles/Admin.module.css";
 import FormGuru from "./FormGuru";
 const EditGuru = () => {
   const params = useParams();
