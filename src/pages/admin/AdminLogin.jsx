@@ -32,7 +32,7 @@ const AdminLogin = () => {
     [formData, dispatch, navigate]
   );
   return (
-    <div className={`container ${styles.login}`}>
+    <div className={`auth-form ${styles.login}`}>
       <h2 className={styles.h2}>Login</h2>
       <form onSubmit={loginHandler}>
         <TextField

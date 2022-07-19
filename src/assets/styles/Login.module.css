@@ -1,4 +1,4 @@
-:global(.container).login{
+:global(.auth-form).login{
     margin-top: 10em;
     padding: 2em;
     border-radius: .75em;

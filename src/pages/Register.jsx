@@ -16,7 +16,7 @@ const Register = () => {
     console.log(res);
   }, [formData]);
   return (
-    <div className={`container ${styles.register}`}>
+    <div className={`auth-form ${styles.register}`}>
       <h2 className={styles.h2}>Register</h2>
       <TextField
         label="Nama Lengkap"

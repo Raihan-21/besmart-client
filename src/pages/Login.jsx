@@ -15,7 +15,7 @@ const Login = () => {
     console.log(res);
   }, [formData]);
   return (
-    <div className={`container ${styles.login}`}>
+    <div className={`auth-form ${styles.login}`}>
       <h2 className={styles.h2}>Login</h2>
       <TextField
         label="Email"

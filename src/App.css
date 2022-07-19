@@ -38,12 +38,48 @@
     transform: rotate(360deg);
   }
 }
+:root{
+  --primary: #D631C5;
+}
 .container{
+  padding: 0 40px;
+}
+.auth-form{
   margin: auto;
   width: 20%;
 }
 .flex{
   display: flex;
+}
+.justify-center{
+  justify-content: center;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.justify-even{
+  justify-content: space-evenly;
+}
+.align-center{
+  align-items: center;
+}
+.w-full{
+  width: 100%;
+}
+.text-left{
+  text-align: left;
+}
+.text-primary{
+  color: var(--primary);
+}
+.text-gray{
+  color: #636363;
+}
+.text-white{
+  color: white;
+}
+.bg-primary{
+  background-color: var(--primary);
 }
 .DraftEditor-root{
   width: 50%;

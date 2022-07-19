@@ -1,24 +1,15 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../assets/styles/Navbar.module.css";
 const Navbar = () => {
-  const [counter, setCounter] = useState(0);
   return (
-    <div className={styles.navbar}>
+    <div className={`${styles.navbar} align-center`}>
       <Link to="/">
         <h3>Be Smart</h3>
       </Link>
       <div>
-        {counter}
-        <button
-          onClick={() =>
-            setCounter((prevState) => {
-              return prevState + 1;
-            })
-          }
-        >
-          +
-        </button>
+        <Link to="/">Home</Link>
+      </div>
+      <div>
         <Link to="/login" className={styles.loginBtn}>
           Masuk
         </Link>
