@@ -1,13 +1,28 @@
-import { Link } from "react-router-dom";
 import styles from "../assets/styles/Navbar.module.css";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 const Navbar = () => {
+  const [tab, setTab] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    const path = location.pathname.split("/");
+    if (path.every((item) => !item)) setTab("home");
+    console.log(location.pathname);
+  }, []);
   return (
     <div className={`${styles.navbar} align-center`}>
       <Link to="/">
         <h3>Be Smart</h3>
       </Link>
       <div>
-        <Link to="/">Home</Link>
+        <Link
+          to="/"
+          className={tab === "home" ? styles.active : ""}
+          onClick={() => setTab("home")}
+        >
+          Home
+        </Link>
       </div>
       <div>
         <Link to="/login" className={styles.loginBtn}>

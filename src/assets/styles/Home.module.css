@@ -1,7 +1,46 @@
+.home{
+    margin: 100px 0 50px 0;
+    padding: 0 100px;
+}
+
 .home h1{
     font-size: 2.5em;
-    margin-bottom: 10px;
-}
-.home p{
     margin-bottom: 20px;
+}
+.home .bigText{
+    margin-top: 50px;
+    max-width: 40%;
+}
+.home .banner{
+    margin-bottom: 30px;
+}
+.home .banner img{
+    height: 370px;
+    margin-bottom: 50px;
+}
+.home .bigText p{
+    margin-bottom: 40px;
+}
+.bigText a{
+    padding: 8px 20px;
+}
+.bigText i{
+    margin-left: 10px;
+}
+.home h2{
+    margin-bottom: 40px;
+}
+.courseHome{
+    padding: 0 70px;
+}
+.courseHome h3{
+    font-size: 15px;
+}
+.courseHome .card{
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 15px;
+}
+.courseHome img{
+    height: 200px;
 }

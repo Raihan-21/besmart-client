@@ -2,6 +2,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import "./App.css";
+import "./assets/styles/icon.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AdminBlankLayout, AdminLayout, MainLayout } from "./layout/Layout";
 import Home from "./pages/Home";
@@ -17,6 +18,7 @@ import AdminNews from "./pages/admin/news/AdminNews";
 import EditNews from "./pages/admin/news/EditNews";
 import AddNews from "./pages/admin/news/AddNews";
 import Protected from "./components/Protected";
+import Classes from "./pages/Classes";
 
 function App() {
   const theme = createTheme({
@@ -33,6 +35,7 @@ function App() {
               <Route index element={<Home />} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
+              <Route path="/kelas" element={<Classes />} />
             </Route>
             <Route
               path="/admin/"
