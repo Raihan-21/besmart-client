@@ -14,7 +14,7 @@ const Classes = () => {
         <Grid container justifyContent="center">
           {!isLoading &&
             data.map((item, i) => (
-              <Grid item xs={8}>
+              <Grid item xs={8} key={i}>
                 <Box
                   className={` ${styles.class} flex align-center`}
                   sx={{

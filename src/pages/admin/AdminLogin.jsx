@@ -8,7 +8,7 @@ import { login } from "../../slices/adminSlice";
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState({});
-  const loggedIn = useSelector((state) => state.auth.loggedIn);
+  const loggedIn = useSelector((state) => state.admin.loggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -23,7 +23,7 @@ const AdminLogin = () => {
 
         setError({});
         dispatch(login());
-        localStorage.setItem("user", res.data.data.username);
+        localStorage.setItem("admin", res.data.data.username);
         navigate("/admin/dashboard");
       } catch (error) {
         setError(error.response.data);

@@ -2,25 +2,32 @@ import { TextField, Button } from "@mui/material";
 import styles from "../assets/styles/Login.module.css";
 import { useState, useCallback } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { login } from "../slices/userSlice";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState({ username: "", password: "" });
-  const login = useCallback(
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const loginHandler = useCallback(
     async (e) => {
       e.preventDefault();
       try {
         const res = await axios.post("/login", formData);
-        console.log(res);
         setError({ username: "", password: "" });
+        dispatch(login());
+        localStorage.setItem("user", res.data.username);
+        navigate("/");
       } catch (error) {
         setError(error.response.data);
       }
     },
-    [formData]
+    [formData, dispatch, navigate]
   );
   return (
     <div className={`auth-form ${styles.login}`}>
-      <form onSubmit={login}>
+      <form onSubmit={loginHandler}>
         <h2 className={styles.h2}>Login</h2>
         <TextField
           label="Username"

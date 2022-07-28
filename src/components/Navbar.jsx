@@ -8,8 +8,7 @@ const Navbar = () => {
   useEffect(() => {
     const path = location.pathname.split("/");
     if (path.every((item) => !item)) setTab("home");
-    console.log(location.pathname);
-  }, []);
+  }, [location.pathname]);
   return (
     <div className={`${styles.navbar} align-center`}>
       <Link to="/">

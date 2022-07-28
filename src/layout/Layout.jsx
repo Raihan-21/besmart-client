@@ -29,7 +29,7 @@ const AdminLayout = () => {
 const AdminBlankLayout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    if (localStorage.getItem("user")) {
+    if (localStorage.getItem("admin")) {
       dispatch(login());
     }
   }, [dispatch]);
