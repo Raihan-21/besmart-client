@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useCallback } from "react";
-import { logout } from "../slices/authSlice";
+import { logout } from "../slices/adminSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 

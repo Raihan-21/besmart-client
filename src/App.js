@@ -1,7 +1,7 @@
 import { ThemeProvider, createTheme } from "@mui/material";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import "./App.css";
+import "./App.scss";
 import "./assets/styles/icon.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AdminBlankLayout, AdminLayout, MainLayout } from "./layout/Layout";

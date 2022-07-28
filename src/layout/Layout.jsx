@@ -4,7 +4,7 @@ import AdminSidebar from "../components/AdminSidebar";
 import Navbar from "../components/Navbar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { login } from "../slices/authSlice";
+import { login } from "../slices/adminSlice";
 // import { useNavigate } from "react-router-dom";
 
 const MainLayout = () => {

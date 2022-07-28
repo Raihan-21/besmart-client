@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { login } from "../slices/authSlice";
+import { login } from "../slices/adminSlice";
 const Protected = ({ children }) => {
   const loggedIn = useSelector((state) => state.auth.loggedIn);
   const dispatch = useDispatch();

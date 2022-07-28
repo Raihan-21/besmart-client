@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../slices/authSlice";
+import { login } from "../../slices/adminSlice";
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState({});
