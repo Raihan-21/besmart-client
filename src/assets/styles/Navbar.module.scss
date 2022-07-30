@@ -42,25 +42,30 @@ a{
 .sidebar{
     position: fixed;
     top: 0;
-    background-color: rgb(85, 85, 255);
-
     height: 100%;
     width: 200px;
     display: flex;
     flex-direction: column;
     padding: 20px 0;
 }
-.sidebar a{
-    border-radius: 0;
-    padding: 10px 10px;
-    color: white;
+
+.sidebarAdmin{
+    background-color: rgb(85, 85, 255);
+    a{
+        border-radius: 0;
+        padding: 10px 10px;
+        color: white;
+        &:hover{
+            background-color: rgb(41, 41, 122);
+        }
+    }
+    .active{
+        background-color: white;
+        color: rgb(85, 85, 255);
+    }
 }
-.sidebar a:hover{
-    background-color: rgb(41, 41, 122);
-}
-.sidebar .active{
-    background-color: white;
-    color: rgb(85, 85, 255);
+.sidebarMurid{
+    background-color: #F1F3FF;
 }
 .registerBtn{
     background-color: white;

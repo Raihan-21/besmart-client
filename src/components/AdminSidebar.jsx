@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import style from "../assets/styles/Navbar.module.css";
+import style from "../assets/styles/Navbar.module.scss";
 const AdminSidebar = () => {
   const [activeTab, setActiveTab] = useState("");
   const location = useLocation();
@@ -14,7 +14,7 @@ const AdminSidebar = () => {
     });
   }, [location.pathname]);
   return (
-    <div className={style.sidebar}>
+    <div className={`${style.sidebar} ${style.sidebarAdmin}`}>
       <Link
         to="/admin/dashboard"
         className={activeTab === "dashboard" ? style.active : ""}

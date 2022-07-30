@@ -18,7 +18,7 @@ const Login = () => {
         setError({ username: "", password: "" });
         dispatch(login());
         localStorage.setItem("user", res.data.username);
-        navigate("/");
+        navigate("/murid");
       } catch (error) {
         setError(error.response.data);
       }

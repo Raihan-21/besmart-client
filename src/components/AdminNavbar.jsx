@@ -5,7 +5,7 @@ import { logout } from "../slices/adminSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import styles from "../assets/styles/Navbar.module.css";
+import styles from "../assets/styles/Navbar.module.scss";
 const AdminNavbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

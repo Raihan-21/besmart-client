@@ -9,7 +9,12 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { AdminBlankLayout, AdminLayout, MainLayout } from "./layout/Layout";
+import {
+  AdminBlankLayout,
+  AdminLayout,
+  MainLayout,
+  MuridLayout,
+} from "./layout/Layout";
 import Home from "./pages/Home";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminMurid from "./pages/admin/murid/AdminMurid";
@@ -25,6 +30,7 @@ import AddNews from "./pages/admin/news/AddNews";
 import Protected from "./components/Protected";
 import Classes from "./pages/Classes";
 import Dashboard from "./pages/murid/Dashboard";
+import MuridRoute from "./components/MuridRoute";
 
 function App() {
   const theme = createTheme({
@@ -43,7 +49,14 @@ function App() {
               <Route path="register" element={<Register />} />
               <Route path="kelas" element={<Classes />} />
             </Route>
-            <Route path="/murid/">
+            <Route
+              path="/murid/"
+              element={
+                <MuridRoute>
+                  <MuridLayout />
+                </MuridRoute>
+              }
+            >
               <Route
                 index
                 element={<Navigate to="/murid/dashboard" replace />}

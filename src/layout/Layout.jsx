@@ -5,12 +5,21 @@ import Navbar from "../components/Navbar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { login } from "../slices/adminSlice";
+import MuridSidebar from "../components/MuridSidebar";
 // import { useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
   return (
     <div>
       <Navbar />
+      <Outlet />
+    </div>
+  );
+};
+const MuridLayout = () => {
+  return (
+    <div className="flex">
+      <MuridSidebar />
       <Outlet />
     </div>
   );
@@ -43,4 +52,4 @@ const AdminBlankLayout = () => {
   );
 };
 
-export { MainLayout, AdminLayout, AdminBlankLayout };
+export { MainLayout, MuridLayout, AdminLayout, AdminBlankLayout };
