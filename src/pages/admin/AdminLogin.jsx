@@ -1,5 +1,5 @@
 import { TextField, Button } from "@mui/material";
-import styles from "../../assets/styles/Admin.module.css";
+import styles from "../../assets/styles/Admin.module.scss";
 import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

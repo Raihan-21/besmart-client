@@ -11,27 +11,27 @@ import { useNavigate } from "react-router-dom";
 import style from "../../../assets/styles/Admin.module.scss";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
-const AdminNews = () => {
-  const [data, isLoading] = useFetch("/admin/berita");
+import axios from "axios";
+
+const Kagetori = () => {
+  const [data, isLoading] = useFetch("/admin/kategori");
   const navigate = useNavigate();
   const deleteHandler = useCallback(
     async (slug) => {
-      const res = await fetch(`/admin/berita/${slug}`, {
-        method: "DELETE",
-      });
-      const resData = await res.json();
-      if (resData.error) {
-        console.log(resData.error);
-        return;
+      try {
+        const res = await axios.delete(`/admin/kategori/${slug}`);
+        console.log(res.data);
+        navigate(0);
+      } catch (error) {
+        console.log(error.response);
       }
-      navigate(0);
     },
     [navigate]
   );
   return (
     <div className={`${style.adminContainer} ${style.tabelAdmin}`}>
       <div className={style.heading}>
-        <h3>Berita</h3>
+        <h3>Kategori</h3>
         <Link to="tambah">
           <Button color="secondary" variant="contained">
             Tambah
@@ -44,7 +44,7 @@ const AdminNews = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>judul</TableCell>
+                <TableCell>Nama</TableCell>
                 <TableCell>Deskripsi</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
@@ -53,10 +53,10 @@ const AdminNews = () => {
               {data &&
                 data.map((item, i) => (
                   <TableRow key={i}>
-                    <TableCell>{item.judul}</TableCell>
+                    <TableCell>{item.nama_kategori}</TableCell>
                     <TableCell>{item.deskripsi}</TableCell>
                     <TableCell>
-                      <Link to={item.slug || ""}>
+                      <Link to={item._id || ""}>
                         <Button
                           className={style.actionBtn}
                           color="primary"
@@ -71,7 +71,7 @@ const AdminNews = () => {
                         color="error"
                         variant="contained"
                         onClick={() => {
-                          deleteHandler(item.slug);
+                          deleteHandler(item._id);
                         }}
                       >
                         Hapus
@@ -87,4 +87,4 @@ const AdminNews = () => {
   );
 };
 
-export default AdminNews;
+export default Kagetori;

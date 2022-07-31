@@ -1,21 +1,19 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../assets/styles/Admin.module.css";
+import styles from "../../../assets/styles/Admin.module.scss";
 import FormNews from "./FormNews";
+import axios from "axios";
+
 const AddNews = () => {
   const navigate = useNavigate();
   const formSubmit = useCallback(
     async (data) => {
-      const res = await fetch(`/admin/berita`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const resData = await res.json();
-      if (resData.error) {
-        console.log(resData.error);
-      } else {
+      try {
+        const res = await axios.post(`/admin/berita`, data);
+        console.log(res.data);
         navigate("/admin/berita");
+      } catch (error) {
+        console.log(error.response);
       }
     },
     [navigate]

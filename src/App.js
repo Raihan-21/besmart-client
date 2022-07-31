@@ -31,6 +31,9 @@ import Protected from "./components/Protected";
 import Classes from "./pages/Classes";
 import Dashboard from "./pages/murid/Dashboard";
 import MuridRoute from "./components/MuridRoute";
+import Kagetori from "./pages/admin/kategori/Kategori";
+import AddKategori from "./pages/admin/kategori/AddKategori";
+import EditKategori from "./pages/admin/kategori/EditKategori";
 
 function App() {
   const theme = createTheme({
@@ -81,8 +84,12 @@ function App() {
               <Route path="berita" element={<AdminNews />} />
               <Route path="berita/tambah" element={<AddNews />} />
               <Route path="berita/:slug" element={<EditNews />} />
+              <Route path="kategori" element={<Kagetori />} />
+              <Route path="kategori/tambah" element={<AddKategori />} />
+              <Route path="kategori/:id" element={<EditKategori />} />
             </Route>
             <Route path="/admin/" element={<AdminBlankLayout />}>
+              <Route index element={<Navigate to="login" replace />} />
               <Route path="login" element={<AdminLogin />} />
             </Route>
           </Routes>

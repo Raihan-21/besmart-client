@@ -15,20 +15,21 @@
 .tabelAdmin .actionBtn{
     margin-right: 5px;
 }
-.formAdmin form{
+.formAdmin {
+    .formContainer{
     box-shadow: 0px 1px 5px 1px rgb(190, 190, 190);
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px;}
 }
-.formAdmin .inputs{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-}
-.formAdmin .inputs .input{
-    width: 48% !important;
-}
+// .formAdmin .inputs{
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     width: 100%;
+// }
+// .formAdmin .inputs .input{
+//     width: 48% !important;
+// }
 .formAdmin.guru form{
     display: flex;
     flex-direction: column;

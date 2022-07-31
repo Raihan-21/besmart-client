@@ -1,21 +1,19 @@
 import { useCallback } from "react";
 import useFetch from "../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import styles from "../../../assets/styles/Admin.module.css";
+import styles from "../../../assets/styles/Admin.module.scss";
 import FormNews from "./FormNews";
+import axios from "axios";
 const EditNews = () => {
   const params = useParams();
   const [data, isLoading] = useFetch(`/admin/berita/${params.slug}`);
   const formSubmit = useCallback(
     async (data) => {
-      const res = await fetch(`/admin/berita/${params.slug}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const resData = await res.json();
-      if (resData.error) {
-        console.log(resData.error);
+      try {
+        const res = await axios.put(`/admin/berita/${params.slug}`, data);
+        console.log(res.data);
+      } catch (error) {
+        console.log(error.response);
       }
     },
     [params.slug]

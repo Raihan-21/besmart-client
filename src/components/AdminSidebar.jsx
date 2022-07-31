@@ -51,6 +51,15 @@ const AdminSidebar = () => {
       >
         Berita
       </Link>
+      <Link
+        to="/admin/kategori"
+        className={activeTab === "kategori" ? style.active : ""}
+        onClick={() => {
+          setActiveTab("kategori");
+        }}
+      >
+        Kategori
+      </Link>
     </div>
   );
 };

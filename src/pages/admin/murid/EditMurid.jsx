@@ -1,21 +1,20 @@
 import { useCallback } from "react";
 import useFetch from "../../../hooks/useFetch";
 import { useParams } from "react-router-dom";
-import styles from "../../../assets/styles/Admin.module.css";
+import styles from "../../../assets/styles/Admin.module.scss";
 import FormMurid from "./FormMurid";
+import axios from "axios";
+
 const EditMurid = () => {
   const params = useParams();
   const [data, isLoading] = useFetch(`/admin/murid/${params.id}`);
   const formSubmit = useCallback(
     async (data) => {
-      const res = await fetch(`/admin/murid/${params.id}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const resData = await res.json();
-      if (resData.error) {
-        console.log(resData.error);
+      try {
+        const res = await axios.put(`/admin/murid/${params.id}`, data);
+        console.log(res.data);
+      } catch (error) {
+        console.log(error.response);
       }
     },
     [params.id]

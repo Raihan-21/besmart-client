@@ -9,7 +9,7 @@ import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
-import style from "../../../assets/styles/Admin.module.css";
+import style from "../../../assets/styles/Admin.module.scss";
 import { Link } from "react-router-dom";
 const AdminMurid = () => {
   const [murid, setMurid] = useState([]);
