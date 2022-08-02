@@ -34,6 +34,9 @@ import MuridRoute from "./components/MuridRoute";
 import Kagetori from "./pages/admin/kategori/Kategori";
 import AddKategori from "./pages/admin/kategori/AddKategori";
 import EditKategori from "./pages/admin/kategori/EditKategori";
+import Class from "./pages/admin/kelas/Class";
+import AddClass from "./pages/admin/kelas/AddClass";
+import EditClass from "./pages/admin/kelas/EditClass";
 
 function App() {
   const theme = createTheme({
@@ -87,6 +90,9 @@ function App() {
               <Route path="kategori" element={<Kagetori />} />
               <Route path="kategori/tambah" element={<AddKategori />} />
               <Route path="kategori/:id" element={<EditKategori />} />
+              <Route path="kelas" element={<Class />} />
+              <Route path="kelas/tambah" element={<AddClass />} />
+              <Route path="kelas/:id" element={<EditClass />} />
             </Route>
             <Route path="/admin/" element={<AdminBlankLayout />}>
               <Route index element={<Navigate to="login" replace />} />
