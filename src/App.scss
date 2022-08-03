@@ -93,9 +93,15 @@ $spacing: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24;
 .bg-primary{
   background-color: var(--primary);
 }
-.DraftEditor-root{
-  width: 50%;
-}
+
 .full-width{
   margin-left: 0;
 }
+
+/* Library Styling */
+.DraftEditor-root{
+  width: 50%;
+}
+  .Overlay-fullSize{
+    width: 100% !important;
+  }
