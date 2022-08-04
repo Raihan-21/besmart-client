@@ -21,21 +21,12 @@ import { Editor } from "@tinymce/tinymce-react";
 // );
 
 const FormNews = ({ formData, onSubmit }) => {
-  const editorRef = useRef(null);
+  // const editorRef = useRef(null);
   const [data, setData] = useState({});
   const [editor, setEditor] = useState("");
-  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  // const onEditorStateChange = (editorState) => {
-  //   setEditorState(editorState);
-  // };
   useEffect(() => {
     setData(formData);
-    // setEditorState(EditorState.createWithContent(content));
   }, [formData]);
-  const click = () => {
-    setEditor(editorRef.current.getContent());
-    console.log(editor);
-  };
   return (
     <>
       <div className={styles.formContainer}>
@@ -63,8 +54,13 @@ const FormNews = ({ formData, onSubmit }) => {
             <Grid item sm={12}>
               <Editor
                 apiKey="ul2nfqp4z83hvjqjioeb9ior4p7pmvv3t4v3wohb3fqbvngp"
-                onInit={(evt, editor) => (editorRef.current = editor)}
-                initialValue="<p>This is the initial content of the editor.</p>"
+                // onInit={(evt, editor) => (editorRef.current = editor)}
+                value={data ? (data.deskripsi ? data.deskripsi : "") : ""}
+                onEditorChange={(value) => {
+                  setData((prevState) => {
+                    return { ...prevState, deskripsi: value };
+                  });
+                }}
                 init={{
                   // height: 500,
                   menubar: false,
@@ -99,33 +95,9 @@ const FormNews = ({ formData, onSubmit }) => {
               />
             </Grid>
           </Grid>
-
-          {/* <div
-            dangerouslySetInnerHTML={{
-              __html: editor,
-            }}
-          ></div> */}
-          {/* {} */}
-          {/* <Editor
-            editorState={editorState}
-            onEditorStateChange={onEditorStateChange}
-          /> */}
-          {/* <TextField
-            label="Deskripsi"
-            variant="outlined"
-            margin="normal"
-            value={data ? (data.deskripsi ? data.deskripsi : "") : ""}
-            onChange={(e) => {
-              setData((prevState) => {
-                return { ...prevState, deskripsi: e.target.value };
-              });
-            }}
-          /> */}
-
           <Button type="submit" color="primary" variant="contained">
             Save
           </Button>
-          <Button onClick={click}>editor</Button>
         </form>
       </div>
     </>

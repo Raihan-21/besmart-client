@@ -8,8 +8,12 @@ const AddNews = () => {
   const navigate = useNavigate();
   const formSubmit = useCallback(
     async (data) => {
+      const tanggal_buat = new Date().toISOString().slice(0, 10);
       try {
-        const res = await axios.post(`/admin/berita`, data);
+        const res = await axios.post(`/admin/berita`, {
+          ...data,
+          tanggal_buat,
+        });
         console.log(res.data);
         navigate("/admin/berita");
       } catch (error) {

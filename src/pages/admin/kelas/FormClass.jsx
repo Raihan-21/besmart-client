@@ -15,45 +15,49 @@ import {
   DateNavigator,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { ViewState, EditingState } from "@devexpress/dx-react-scheduler";
-const appointments = [
-  {
-    title: "hari 1",
-    startDate: new Date(2022, 7, 1, 9, 45),
-    endDate: new Date(2022, 7, 1, 11, 0),
-    id: 0,
-  },
-];
+
 const FormClass = ({ formData, onSubmit }) => {
   const [data, setData] = useState({});
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [appointData, setAppointData] = useState(appointments);
+  // const [appointData, setAppointData] = useState([]);
   //eslint-disable-next-line
   const [guru, guruLoading] = useFetch("/admin/guru");
   //eslint-disable-next-line
   const [kategori, kategoriLoading] = useFetch("/admin/kategori");
   const commitChanges = useCallback(
-    ({ added, changed }) => {
-      let currentData = [...appointData];
+    ({ added, changed, deleted }) => {
+      let { jadwal } = data;
       if (added) {
         const startingAddedId =
-          appointData.length > 0
-            ? appointData[appointData.length - 1].id + 1
+          data.jadwal.length > 0
+            ? data.jadwal[data.jadwal.length - 1].id + 1
             : 0;
-        currentData = [...currentData, { id: startingAddedId, ...added }];
+        jadwal = [...jadwal, { id: startingAddedId, ...added }];
       }
       if (changed) {
-        currentData = currentData.map((appointments) =>
+        jadwal = jadwal.map((appointments) =>
           changed[appointments.id]
             ? { ...appointments, ...changed[appointments.id] }
             : appointments
         );
       }
-      setAppointData(currentData);
+      if (deleted) {
+        jadwal = jadwal.filter((appointment) => appointment.id !== deleted);
+      }
+      setData((prevState) => {
+        return {
+          ...prevState,
+          jadwal,
+        };
+      });
     },
-    [appointData]
+    [data]
   );
   useEffect(() => {
-    setData(formData);
+    if (formData) setData(formData);
+    else {
+      setData({ jadwal: [] });
+    }
   }, [formData]);
   return (
     <>
@@ -129,7 +133,7 @@ const FormClass = ({ formData, onSubmit }) => {
         <div>
           <h3>Jadwal</h3>
 
-          <Scheduler data={appointData}>
+          <Scheduler data={data.jadwal}>
             <ViewState
               currentDate={currentDate}
               onCurrentDateChange={(currentDate) => {
