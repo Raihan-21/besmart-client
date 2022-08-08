@@ -13,12 +13,10 @@ const MuridSidebar = () => {
     navigate("/");
   }, [dispatch, navigate]);
   return (
-    <div>
-      <div className={`${styles.sidebar} ${styles.sidebarMurid}`}>
-        <h3>Be Smart</h3>
-        <Link to="/murid/dashboard"> Dashboard</Link>
-        <Button onClick={logoutHandler}>Logout</Button>
-      </div>
+    <div className={`${styles.sidebar} ${styles.sidebarMurid}`}>
+      <h3>Be Smart</h3>
+      <Link to="/murid/dashboard"> Dashboard</Link>
+      <Button onClick={logoutHandler}>Logout</Button>
     </div>
   );
 };

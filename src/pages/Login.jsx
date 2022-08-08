@@ -16,8 +16,7 @@ const Login = () => {
       try {
         const res = await axios.post("/login", formData);
         setError({ username: "", password: "" });
-        dispatch(login());
-        localStorage.setItem("user", res.data.username);
+        dispatch(login(res.data.data));
         navigate("/murid");
       } catch (error) {
         setError(error.response.data);

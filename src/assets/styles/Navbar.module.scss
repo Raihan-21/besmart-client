@@ -7,7 +7,7 @@ a{
 .navbar{
     position: fixed;
     top: 0;
-    width: 100%;
+    // width: 100%;
     box-sizing: border-box;
     z-index: 99;
     background-color: white;
@@ -70,4 +70,16 @@ a{
 .registerBtn{
     background-color: white;
     color: rgb(85, 85, 255);
+}
+
+.loggedinNavbar{
+    @extend .navbar;
+    // margin-left: 200px;
+    color: black;
+    justify-content: flex-end;
+    display: block;
+    width: calc(100vw - 200px);
+    max-width: 100vw;
+    // left: 0;
+    
 }

@@ -90,6 +90,9 @@ $spacing: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24;
 .text-white{
   color: white;
 }
+.text-black{
+  color: black;
+}
 .bg-primary{
   background-color: var(--primary);
 }
@@ -105,3 +108,6 @@ $spacing: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24;
   .Overlay-fullSize{
     width: 100% !important;
   }
+.main{
+  margin-left: 200px;
+}

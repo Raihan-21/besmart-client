@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { login } from "../slices/adminSlice";
 import MuridSidebar from "../components/MuridSidebar";
+import LoggedinNavbar from "../components/LoggedinNavbar";
 // import { useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
@@ -20,7 +21,10 @@ const MuridLayout = () => {
   return (
     <div className="flex">
       <MuridSidebar />
-      <Outlet />
+      <div className="main">
+        <LoggedinNavbar />
+        <Outlet />
+      </div>
     </div>
   );
 };
