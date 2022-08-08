@@ -1,4 +1,16 @@
 .muridContainer{
     margin-top: 44px;
-    width: 100%;
+    // width: 100%;
+   padding: 0 8%;
+    h3{
+        margin-bottom: 50px;
+    }
+    .newsContent{
+        margin-top: 25px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

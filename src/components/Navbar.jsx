@@ -10,7 +10,7 @@ const Navbar = () => {
     if (path.every((item) => !item)) setTab("home");
   }, [location.pathname]);
   return (
-    <div className={`${styles.navbar} align-center`}>
+    <div className={`${styles.homeNavbar} align-center`}>
       <Link to="/">
         <h3>Be Smart</h3>
       </Link>

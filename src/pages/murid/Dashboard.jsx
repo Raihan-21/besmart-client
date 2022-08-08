@@ -10,11 +10,14 @@ const Dashboard = () => {
         {!isLoading &&
           data.map((item, i) => (
             <div key={i}>
-              <h4>{item.judul}</h4>
+              <h2>{item.judul}</h2>
               <p className="text-gray">
                 {item.tanggal_buat.split("-").reverse().join("-")}
               </p>
-              <p dangerouslySetInnerHTML={{ __html: item.deskripsi }} />
+              <p
+                dangerouslySetInnerHTML={{ __html: item.deskripsi }}
+                className={styles.newsContent}
+              />
             </div>
           ))}
       </div>

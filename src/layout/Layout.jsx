@@ -21,7 +21,7 @@ const MuridLayout = () => {
   return (
     <div className="flex">
       <MuridSidebar />
-      <div className="main">
+      <div className="main w-full">
         <LoggedinNavbar />
         <Outlet />
       </div>

@@ -37,6 +37,7 @@ import EditKategori from "./pages/admin/kategori/EditKategori";
 import Class from "./pages/admin/kelas/Class";
 import AddClass from "./pages/admin/kelas/AddClass";
 import EditClass from "./pages/admin/kelas/EditClass";
+import Profil from "./pages/murid/Profil";
 
 function App() {
   const theme = createTheme({
@@ -68,6 +69,7 @@ function App() {
                 element={<Navigate to="/murid/dashboard" replace />}
               />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="profil" element={<Profil />} />
             </Route>
             <Route
               path="/admin/"

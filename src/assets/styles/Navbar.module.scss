@@ -66,12 +66,26 @@ a{
 }
 .sidebarMurid{
     background-color: #F1F3FF;
+    h3{
+        margin-bottom: 50px;
+    }
+    a{
+        padding: 10px 0;
+
+    }
+    .active{
+        color: red;
+        background-color: red;
+    }
 }
 .registerBtn{
     background-color: white;
     color: rgb(85, 85, 255);
 }
-
+.homeNavbar{
+    @extend .navbar;
+    width:  100%
+}
 .loggedinNavbar{
     @extend .navbar;
     // margin-left: 200px;
