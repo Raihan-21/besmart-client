@@ -38,6 +38,7 @@ import Class from "./pages/admin/kelas/Class";
 import AddClass from "./pages/admin/kelas/AddClass";
 import EditClass from "./pages/admin/kelas/EditClass";
 import Profil from "./pages/murid/Profil";
+import Kelas from "./pages/murid/Kelas";
 
 function App() {
   const theme = createTheme({
@@ -70,6 +71,7 @@ function App() {
               />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="profil" element={<Profil />} />
+              <Route path="kelas" element={<Kelas />} />
             </Route>
             <Route
               path="/admin/"
