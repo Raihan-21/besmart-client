@@ -1,25 +1,49 @@
 import styles from "../../assets/styles/Murid.module.scss";
-import { Grid, TextField, Button } from "@mui/material";
+import {
+  Grid,
+  TextField,
+  Button,
+  Backdrop,
+  CircularProgress,
+  Alert,
+} from "@mui/material";
 import useFetch from "../../hooks/useFetch";
 import { useSelector } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setName } from "../../slices/userSlice";
 
 const Profil = () => {
   const user = useSelector((state) => state.user.user);
   const [data, isLoading] = useFetch(`/profile/${user.username}`);
   const [formData, setFormData] = useState({});
+  const [submitLoading, setSubmitLoading] = useState(false);
+  const [feedback, setFeedback] = useState({});
+  const dispatch = useDispatch();
   const formHandler = useCallback(
     async (e) => {
       e.preventDefault();
+      setSubmitLoading(true);
       try {
-        const res = axios.put("/profile", formData);
-        console.log(res.data);
+        const res = await axios.put(`/profile/${user.username}`, formData);
+        setFeedback({
+          isSuccess: true,
+          message: res.data.message,
+        });
+        dispatch(setName(formData.nama));
       } catch (error) {
         console.log(error.response);
+        setFeedback({
+          isSuccess: false,
+          message: error.response.data.error,
+        });
+      } finally {
+        setSubmitLoading(false);
+        console.log(feedback);
       }
     },
-    [formData]
+    [formData, user.username, feedback, dispatch]
   );
   useEffect(() => {
     setFormData(data);
@@ -27,6 +51,18 @@ const Profil = () => {
   return (
     <div className={`${styles.muridContainer}`}>
       <h3 className="text-left">Profil</h3>
+      {feedback.message && (
+        <Alert
+          sx={{ mb: 2 }}
+          severity={feedback.isSuccess ? "success" : "error"}
+        >
+          {feedback.message}
+        </Alert>
+      )}
+
+      <Backdrop open={submitLoading}>
+        <CircularProgress sx={{ color: "white" }} />
+      </Backdrop>
       <div className=" form__container">
         {!isLoading && (
           <form className="space-y-4" onSubmit={formHandler}>

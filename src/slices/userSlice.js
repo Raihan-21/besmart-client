@@ -22,7 +22,10 @@ const userSlice = createSlice({
     getUser: (state) => {
       localStorage.getItem("user");
     },
+    setName: (state, { payload }) => {
+      state.user.name = payload;
+    },
   },
 });
-export const { login, logout, setToken, getUser } = userSlice.actions;
+export const { login, logout, setToken, getUser, setName } = userSlice.actions;
 export default userSlice.reducer;
