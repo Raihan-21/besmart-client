@@ -2,10 +2,10 @@ import { Button } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, Link, useLocation } from "react-router-dom";
-import { logout } from "../slices/userSlice";
+import { guruLogout } from "../slices/userSlice";
 import styles from "../assets/styles/Navbar.module.scss";
 
-const MuridSidebar = () => {
+const GuruSidebar = () => {
   const [tab, setTab] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,14 +17,14 @@ const MuridSidebar = () => {
     });
   }, [location.pathname]);
   const logoutHandler = useCallback(() => {
-    dispatch(logout());
-    navigate("/");
+    dispatch(guruLogout());
+    navigate("/guru/login");
   }, [dispatch, navigate]);
   return (
     <div className={`${styles.sidebar} ${styles.sidebarMurid}`}>
       <h3>Be Smart</h3>
       <Link
-        to="/murid/dashboard"
+        to="/guru/dashboard"
         onClick={() => {
           setTab("dashboard");
         }}
@@ -34,7 +34,7 @@ const MuridSidebar = () => {
         Dashboard
       </Link>
       <Link
-        to="/murid/kelas"
+        to="/guru/kelas"
         onClick={() => {
           setTab("kelas");
         }}
@@ -42,7 +42,7 @@ const MuridSidebar = () => {
         Kelas
       </Link>
       <Link
-        to="/murid/profil"
+        to="/guru/profil"
         onClick={() => {
           setTab("profil");
         }}
@@ -56,4 +56,4 @@ const MuridSidebar = () => {
   );
 };
 
-export default MuridSidebar;
+export default GuruSidebar;

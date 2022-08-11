@@ -5,8 +5,10 @@ import Navbar from "../components/Navbar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { login } from "../slices/adminSlice";
+import { guruLogin } from "../slices/userSlice";
 import MuridSidebar from "../components/MuridSidebar";
 import LoggedinNavbar from "../components/LoggedinNavbar";
+import GuruSidebar from "../components/GuruSidebar";
 // import { useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
@@ -21,6 +23,17 @@ const MuridLayout = () => {
   return (
     <div className="flex">
       <MuridSidebar />
+      <div className="main w-full">
+        <LoggedinNavbar />
+        <Outlet />
+      </div>
+    </div>
+  );
+};
+const GuruLayout = () => {
+  return (
+    <div className="flex">
+      <GuruSidebar />
       <div className="main w-full">
         <LoggedinNavbar />
         <Outlet />
@@ -55,5 +68,27 @@ const AdminBlankLayout = () => {
     </div>
   );
 };
-
-export { MainLayout, MuridLayout, AdminLayout, AdminBlankLayout };
+const GuruBlankLayout = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (localStorage.getItem("guru")) {
+      dispatch(guruLogin());
+    }
+  }, [dispatch]);
+  return (
+    <div>
+      <Navbar />
+      <div>
+        <Outlet />
+      </div>
+    </div>
+  );
+};
+export {
+  MainLayout,
+  MuridLayout,
+  GuruLayout,
+  AdminLayout,
+  AdminBlankLayout,
+  GuruBlankLayout,
+};

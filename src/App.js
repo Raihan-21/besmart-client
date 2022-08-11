@@ -12,6 +12,8 @@ import {
 import {
   AdminBlankLayout,
   AdminLayout,
+  GuruBlankLayout,
+  GuruLayout,
   MainLayout,
   MuridLayout,
 } from "./layout/Layout";
@@ -39,6 +41,8 @@ import AddClass from "./pages/admin/kelas/AddClass";
 import EditClass from "./pages/admin/kelas/EditClass";
 import Profil from "./pages/murid/Profil";
 import Kelas from "./pages/murid/Kelas";
+import GuruRoute from "./components/GuruRoute";
+import GuruLogin from "./pages/GuruLogin";
 
 function App() {
   const theme = createTheme({
@@ -72,6 +76,21 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="profil" element={<Profil />} />
               <Route path="kelas" element={<Kelas />} />
+            </Route>
+            <Route
+              path="/guru/"
+              element={
+                <GuruRoute>
+                  <GuruLayout />
+                </GuruRoute>
+              }
+            >
+              <Route index element={<Navigate to="dashboard"></Navigate>} />
+              <Route path="dashboard" element={<Dashboard />} />
+            </Route>
+            <Route path="/guru/" element={<GuruBlankLayout />}>
+              <Route index element={<Navigate to="login" replace />} />
+              <Route path="login" element={<GuruLogin />} />
             </Route>
             <Route
               path="/admin/"
