@@ -1,14 +1,10 @@
-import { Button } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate, Link, useLocation } from "react-router-dom";
-import { guruLogout } from "../slices/userSlice";
+// import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "../assets/styles/Navbar.module.scss";
 
 const GuruSidebar = () => {
   const [tab, setTab] = useState("");
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
     const tabs = ["dashboard", "kelas", "profil"];
@@ -16,10 +12,6 @@ const GuruSidebar = () => {
       if (location.pathname.includes(tab)) setTab(tab);
     });
   }, [location.pathname]);
-  const logoutHandler = useCallback(() => {
-    dispatch(guruLogout());
-    navigate("/guru/login");
-  }, [dispatch, navigate]);
   return (
     <div className={`${styles.sidebar} ${styles.sidebarMurid}`}>
       <h3>Be Smart</h3>
@@ -48,10 +40,8 @@ const GuruSidebar = () => {
         }}
         className={tab === "profil" ? "active" : ""}
       >
-        {" "}
         Profil
       </Link>
-      <Button onClick={logoutHandler}>Logout</Button>
     </div>
   );
 };

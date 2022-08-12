@@ -4,7 +4,7 @@ import styles from "../../assets/styles/User.module.scss";
 const Dashboard = () => {
   const [data, isLoading] = useFetch("/berita");
   return (
-    <div className={`text-left ${styles.muridContainer}`}>
+    <div className={`text-left ${styles.userContainer}`}>
       <h3>Dashboard</h3>
       <div>
         {!isLoading &&

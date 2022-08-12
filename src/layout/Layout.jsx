@@ -9,6 +9,7 @@ import { guruLogin } from "../slices/userSlice";
 import MuridSidebar from "../components/MuridSidebar";
 import LoggedinNavbar from "../components/LoggedinNavbar";
 import GuruSidebar from "../components/GuruSidebar";
+import GuruNavbar from "../components/GuruNavbar";
 // import { useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
@@ -35,7 +36,7 @@ const GuruLayout = () => {
     <div className="flex">
       <GuruSidebar />
       <div className="main w-full">
-        <LoggedinNavbar />
+        <GuruNavbar />
         <Outlet />
       </div>
     </div>

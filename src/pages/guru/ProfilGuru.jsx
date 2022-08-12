@@ -52,7 +52,7 @@ const ProfilGuru = () => {
     setFormData(data);
   }, [data]);
   return (
-    <div className={`${styles.muridContainer}`}>
+    <div className={`${styles.userContainer}`}>
       <h3 className="text-left">Profil</h3>
       {feedback.message && (
         <Alert

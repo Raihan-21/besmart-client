@@ -1,15 +1,15 @@
 import styles from "../assets/styles/Navbar.module.scss";
 import { useEffect, useCallback, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { logout } from "../slices/userSlice";
+import { guruLogout } from "../slices/userSlice";
 import { useRef } from "react";
 
-const LoggedinNavbar = () => {
+const GuruNavbar = () => {
   const location = useLocation();
-  const user = useSelector((state) => state.user.user);
+  const guru = useSelector((state) => state.user.guru);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState("");
@@ -20,10 +20,9 @@ const LoggedinNavbar = () => {
   }, []);
   const logoutHandler = useCallback(() => {
     handleClose();
-    dispatch(logout());
-    navigate("/login");
+    dispatch(guruLogout());
+    navigate("/guru/login");
   }, [dispatch, navigate, handleClose]);
-
   useEffect(() => {}, [location.pathname]);
   return (
     <div className={`${styles.loggedinNavbar} align-center`}>
@@ -33,7 +32,7 @@ const LoggedinNavbar = () => {
           setAnchorEl(e.currentTarget);
         }}
       >
-        {user.name}
+        {guru.nama}
       </Button>
       <Menu
         anchorEl={anchorEl}
@@ -41,13 +40,11 @@ const LoggedinNavbar = () => {
         onClose={() => setAnchorEl(null)}
         PaperProps={{ style: { width: ref.current.offsetWidth } }}
       >
-        <Link to="profil">
-          <MenuItem>Profile</MenuItem>
-        </Link>
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={logoutHandler}>Logout</MenuItem>
       </Menu>
     </div>
   );
 };
 
-export default LoggedinNavbar;
+export default GuruNavbar;

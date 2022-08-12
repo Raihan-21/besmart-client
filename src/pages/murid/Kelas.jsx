@@ -91,7 +91,7 @@ const Kelas = () => {
     else return <div className="text-center">Hari ini bukan jadwal kamu</div>;
   };
   return (
-    <div className={styles.muridContainer}>
+    <div className={styles.userContainer}>
       <h3 className="text-left">Kelas</h3>
       <Tabs
         value={tabValue}

@@ -20,7 +20,7 @@ const KelasGuru = () => {
   const [data, isLoading] = useFetch(`/api/guru/kelas/${guru.username}`);
   const [currentDate, setCurrentDate] = useState(new Date());
   return (
-    <div className={styles.muridContainer}>
+    <div className={styles.userContainer}>
       <h3 className="text-left">Kelas</h3>
 
       <Scheduler data={!isLoading ? data : []}>
