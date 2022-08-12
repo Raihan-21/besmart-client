@@ -43,7 +43,8 @@ import Profil from "./pages/murid/Profil";
 import Kelas from "./pages/murid/Kelas";
 import GuruRoute from "./components/GuruRoute";
 import GuruLogin from "./pages/GuruLogin";
-
+import KelasGuru from "./pages/guru/KelasGuru";
+import ProfilGuru from "./pages/guru/ProfilGuru";
 function App() {
   const theme = createTheme({
     palette: {
@@ -87,6 +88,8 @@ function App() {
             >
               <Route index element={<Navigate to="dashboard"></Navigate>} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="kelas" element={<KelasGuru />} />
+              <Route path="profil" element={<ProfilGuru />} />
             </Route>
             <Route path="/guru/" element={<GuruBlankLayout />}>
               <Route index element={<Navigate to="login" replace />} />

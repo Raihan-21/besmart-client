@@ -23,7 +23,11 @@ const userSlice = createSlice({
     guruLogin: (state, { payload }) => {
       state.guru.loggedIn = true;
       localStorage.setItem("guru", JSON.stringify(payload));
-      state.guru = { ...state.guru, payload };
+      state.guru = {
+        ...state.guru,
+        username: payload.username,
+        nama: payload.nama,
+      };
     },
     guruLogout: (state) => {
       state.guru.loggedIn = false;

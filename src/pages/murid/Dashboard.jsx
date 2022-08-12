@@ -1,5 +1,5 @@
 import useFetch from "../../hooks/useFetch";
-import styles from "../../assets/styles/Murid.module.scss";
+import styles from "../../assets/styles/User.module.scss";
 
 const Dashboard = () => {
   const [data, isLoading] = useFetch("/berita");

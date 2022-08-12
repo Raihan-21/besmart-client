@@ -1,4 +1,4 @@
-import styles from "../../assets/styles/Murid.module.scss";
+import styles from "../../assets/styles/User.module.scss";
 import { useState, useEffect } from "react";
 import {
   Scheduler,
