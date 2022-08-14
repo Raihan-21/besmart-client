@@ -16,8 +16,17 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { ViewState, EditingState } from "@devexpress/dx-react-scheduler";
 
+const hari = [
+  { label: "Senin", value: "senin" },
+  { label: "Selasa", value: "selasa" },
+  { label: "Rabu", value: "rabu" },
+  { label: "Kamis", value: "kamis" },
+  { label: "Jumat", value: "jumat" },
+  { label: "Sabtu", value: "sabtu" },
+  { label: "Minggu", value: "minggu" },
+];
 const FormClass = ({ formData, onSubmit }) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({ hari: [] });
   const [currentDate, setCurrentDate] = useState(new Date());
   // const [appointData, setAppointData] = useState([]);
   //eslint-disable-next-line
@@ -56,7 +65,7 @@ const FormClass = ({ formData, onSubmit }) => {
   useEffect(() => {
     if (formData) setData(formData);
     else {
-      setData({ jadwal: [] });
+      setData({ jadwal: [], hari: ["", ""] });
     }
   }, [formData]);
   return (
@@ -68,7 +77,7 @@ const FormClass = ({ formData, onSubmit }) => {
             onSubmit(data);
           }}
         >
-          <Grid container columnSpacing={2}>
+          <Grid container columnSpacing={2} rowSpacing={3}>
             <Grid item sm={6} xs={12}>
               <Autocomplete
                 getOptionLabel={(opt) => opt.nama_kategori || ""}
@@ -93,6 +102,7 @@ const FormClass = ({ formData, onSubmit }) => {
                     label="Kategori"
                     variant="outlined"
                     fullWidth
+                    required
                   />
                 )}
               />
@@ -121,6 +131,71 @@ const FormClass = ({ formData, onSubmit }) => {
                     label="Nama Guru"
                     variant="outlined"
                     fullWidth
+                    required
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item sm={3} xs={12}>
+              <Autocomplete
+                getOptionLabel={(opt) => opt.label || ""}
+                isOptionEqualToValue={(opt, value) =>
+                  value ? opt.value === value.value : true
+                }
+                options={hari}
+                value={
+                  data.hari.length ? (data.hari[0] ? data.hari[0] : "") : ""
+                }
+                onChange={(e, value) => {
+                  setData((prevState) => {
+                    return {
+                      ...prevState,
+                      hari: prevState.hari.map((data, i) => {
+                        if (i === 0) return value;
+                        return data;
+                      }),
+                    };
+                  });
+                }}
+                renderInput={(param) => (
+                  <TextField
+                    {...param}
+                    label="Hari ke-1"
+                    variant="outlined"
+                    fullWidth
+                    required
+                  />
+                )}
+              />
+            </Grid>
+            <Grid item sm={3} xs={12}>
+              <Autocomplete
+                getOptionLabel={(opt) => opt.label || ""}
+                isOptionEqualToValue={(opt, value) =>
+                  value ? opt.value === value.value : true
+                }
+                options={hari}
+                value={
+                  data.hari.length ? (data.hari[1] ? data.hari[1] : "") : ""
+                }
+                onChange={(e, value) => {
+                  setData((prevState) => {
+                    return {
+                      ...prevState,
+                      hari: prevState.hari.map((data, i) => {
+                        if (i === 1) return value;
+                        return data;
+                      }),
+                    };
+                  });
+                }}
+                renderInput={(param) => (
+                  <TextField
+                    {...param}
+                    label="Hari ke-2"
+                    variant="outlined"
+                    fullWidth
+                    required
                   />
                 )}
               />
