@@ -7,11 +7,11 @@ import axios from "axios";
 
 const EditGuru = () => {
   const params = useParams();
-  const [data, isLoading] = useFetch(`/admin/guru/${params.id}`);
+  const [data, isLoading] = useFetch(`/api/admin/guru/${params.id}`);
   const formSubmit = useCallback(
     async (data) => {
       try {
-        const res = await axios.put(`/admin/guru/${params.id}`, data);
+        const res = await axios.put(`/api/admin/guru/${params.id}`, data);
         console.log(res.data);
       } catch (error) {
         console.log(error.response);

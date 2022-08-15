@@ -6,24 +6,17 @@ import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import Paper from "@mui/material/Paper";
 import { Button } from "@mui/material";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "../../../assets/styles/Admin.module.scss";
 import { Link } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
 const AdminGuru = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch("/admin/guru");
-      const resData = await res.json();
-      setData(resData.data);
-    };
-    getData();
-  }, []);
+  const [data, isLoading] = useFetch("/api/admin/guru");
   const navigate = useNavigate();
   const deleteHandler = useCallback(
     async (username) => {
-      const res = await fetch(`/admin/guru/${username}`, {
+      const res = await fetch(`/api/admin/guru/${username}`, {
         method: "DELETE",
       });
       const resData = await res.json();
@@ -57,7 +50,7 @@ const AdminGuru = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data &&
+            {!isLoading &&
               data.map((item, i) => (
                 <TableRow key={i}>
                   <TableCell>{item.nama}</TableCell>

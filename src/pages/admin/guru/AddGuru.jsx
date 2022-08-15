@@ -8,7 +8,7 @@ const AddGuru = () => {
   const formSubmit = useCallback(
     async (data) => {
       try {
-        const res = await axios.post(`/admin/guru`, data);
+        const res = await axios.post(`/api/admin/guru`, data);
         console.log(res.data);
         navigate("/admin/guru");
       } catch (error) {
