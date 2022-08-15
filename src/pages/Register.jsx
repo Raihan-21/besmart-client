@@ -10,14 +10,17 @@ const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    id_kategori: "",
+    kategori: { _id: "" },
   });
   const [hari, setHari] = useState([]);
   const register = useCallback(
     async (e) => {
       e.preventDefault();
       try {
-        const res = await axios.post("/register", formData);
+        const res = await axios.post("/register", {
+          ...formData,
+          status: "diproses",
+        });
         console.log(res.data);
       } catch (error) {
         console.log(error.response);
@@ -29,13 +32,13 @@ const Register = () => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `/admin/kelas?filter[id_kategori]=${formData.id_kategori}`
+          `/admin/kelas?filter[id_kategori]=${formData.kategori._id}`
         );
         setHari(
           res.data.data.map((jadwal) => {
             return {
               _id: jadwal._id,
-              hari: jadwal.hari.map((hari) => hari.label),
+              hari: jadwal.hari.map((hari) => hari.label).join(" & "),
             };
           })
         );
@@ -44,7 +47,7 @@ const Register = () => {
       }
     };
     getData();
-  }, [formData.id_kategori]);
+  }, [formData.kategori]);
   return (
     <div className={`auth-form ${styles.register}`}>
       <form onSubmit={register}>
@@ -141,7 +144,7 @@ const Register = () => {
 
         <Grid container columnSpacing={2} rowSpacing={3}>
           <Grid item xs={12}>
-            <h2 className="text-left">Pilih Kursus</h2>
+            <h2 className="text-left">Pilih Kelas</h2>
           </Grid>
           <Grid item xs={6}>
             <Autocomplete
@@ -150,7 +153,7 @@ const Register = () => {
               onChange={(event, value) => {
                 setFormData((prevState) => ({
                   ...prevState,
-                  id_kategori: value._id,
+                  kategori: value,
                 }));
               }}
               getOptionLabel={(opt) => opt.nama_kategori}
@@ -160,16 +163,16 @@ const Register = () => {
           </Grid>
           <Grid item xs={6}>
             <Autocomplete
-              disabled={!formData.id_kategori ? true : false}
+              disabled={!formData.kategori._id ? true : false}
               options={hari}
               onChange={(event, value) => {
                 setFormData((prevState) => ({
                   ...prevState,
-                  id_kelas: value._id,
+                  kelas: value,
                 }));
               }}
               getOptionLabel={(opt) => {
-                return opt.hari.join(" & ");
+                return opt.hari;
               }}
               isOptionEqualToValue={(option, value) => option._id === value._id}
               renderInput={(param) => <TextField {...param} label="Jadwal" />}
