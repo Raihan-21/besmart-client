@@ -1,15 +1,18 @@
 import { TextField, Button, Autocomplete } from "@mui/material";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import styles from "../assets/styles/Register.module.css";
 import { Grid } from "@mui/material";
 import axios from "axios";
+import useFetch from "../hooks/useFetch";
 
 const Register = () => {
+  const [kategori, isLoading] = useFetch("/admin/kategori");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    kategori: "",
+    id_kategori: "",
   });
+  const [hari, setHari] = useState([]);
   const register = useCallback(
     async (e) => {
       e.preventDefault();
@@ -22,6 +25,26 @@ const Register = () => {
     },
     [formData]
   );
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get(
+          `/admin/kelas?filter[id_kategori]=${formData.id_kategori}`
+        );
+        setHari(
+          res.data.data.map((jadwal) => {
+            return {
+              _id: jadwal._id,
+              hari: jadwal.hari.map((hari) => hari.label),
+            };
+          })
+        );
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
+    getData();
+  }, [formData.id_kategori]);
   return (
     <div className={`auth-form ${styles.register}`}>
       <form onSubmit={register}>
@@ -36,7 +59,7 @@ const Register = () => {
               onChange={(e) => {
                 setFormData((prevState) => ({
                   ...prevState,
-                  username: e.target.value,
+                  nama: e.target.value,
                 }));
               }}
             />
@@ -71,6 +94,36 @@ const Register = () => {
           </Grid>
           <Grid item xs={6}>
             <TextField
+              label="No Hp"
+              type="number"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              onChange={(e) => {
+                setFormData((prevState) => ({
+                  ...prevState,
+                  no_hp: e.target.value,
+                }));
+              }}
+            />
+          </Grid>
+
+          <Grid item xs={6}>
+            <TextField
+              label="Alamat"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              onChange={(e) => {
+                setFormData((prevState) => ({
+                  ...prevState,
+                  alamat: e.target.value,
+                }));
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
               label="Password"
               variant="outlined"
               fullWidth
@@ -84,36 +137,46 @@ const Register = () => {
               }}
             />
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              label="Alamat"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-          </Grid>
         </Grid>
-        <h2>Pilih Kursus</h2>
-        <Grid container columnSpacing={2}>
+
+        <Grid container columnSpacing={2} rowSpacing={3}>
+          <Grid item xs={12}>
+            <h2 className="text-left">Pilih Kursus</h2>
+          </Grid>
           <Grid item xs={6}>
             <Autocomplete
-              options={[
-                { label: "Sekolah Menengah Atas", value: "sma" },
-                { label: "Sekolah Menengah Pertama", value: "smp" },
-              ]}
+              disableClearable={true}
+              options={!isLoading ? kategori : []}
               onChange={(event, value) => {
                 setFormData((prevState) => ({
                   ...prevState,
-                  kategori: value.value,
+                  id_kategori: value._id,
                 }));
               }}
-              isOptionEqualToValue={(option, value) =>
-                option.value === value.value
-              }
+              getOptionLabel={(opt) => opt.nama_kategori}
+              isOptionEqualToValue={(option, value) => option._id === value._id}
               renderInput={(param) => <TextField {...param} label="Kategori" />}
             />
           </Grid>
+          <Grid item xs={6}>
+            <Autocomplete
+              disabled={!formData.id_kategori ? true : false}
+              options={hari}
+              onChange={(event, value) => {
+                setFormData((prevState) => ({
+                  ...prevState,
+                  id_kelas: value._id,
+                }));
+              }}
+              getOptionLabel={(opt) => {
+                return opt.hari.join(" & ");
+              }}
+              isOptionEqualToValue={(option, value) => option._id === value._id}
+              renderInput={(param) => <TextField {...param} label="Jadwal" />}
+            />
+          </Grid>
         </Grid>
+
         <Button
           type="submit"
           variant="contained"
