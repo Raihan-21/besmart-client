@@ -30,7 +30,7 @@ const Login = () => {
         <h2 className={styles.h2}>Login</h2>
         <TextField
           label="Username"
-          variant="standard"
+          variant="outlined"
           fullWidth
           margin="normal"
           error={error.username ? true : false}
@@ -45,7 +45,7 @@ const Login = () => {
         />
         <TextField
           label="Password"
-          variant="standard"
+          variant="outlined"
           fullWidth
           margin="normal"
           type="password"

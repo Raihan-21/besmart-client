@@ -56,7 +56,7 @@ const AdminGuru = () => {
                   <TableCell>{item.nama}</TableCell>
                   <TableCell>{item.alamat}</TableCell>
                   <TableCell>{item.no_hp}</TableCell>
-                  <TableCell>
+                  <TableCell sx={{ width: 200 }}>
                     <Link to={item.username || ""}>
                       <Button
                         className={style.actionBtn}

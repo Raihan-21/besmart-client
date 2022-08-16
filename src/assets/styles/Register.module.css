@@ -1,9 +1,15 @@
 :global(.auth-form).register{
-    margin-top: 5em;
+    margin-top: 6em;
+    margin-bottom: 30px;
     padding: 2em;
     border-radius: .75em;
     border: 1px solid grey;
     box-shadow: 1px 1px 10px 1px lightgray;
+    max-width: 60%;
+    @media screen and (min-width: 720px) {
+        max-width: 50%;
+        margin-top: 5em;
+    }
 }
 .registerBtn{
     margin-top: 1em;

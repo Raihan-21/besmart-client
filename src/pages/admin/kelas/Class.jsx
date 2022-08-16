@@ -55,7 +55,7 @@ const Class = () => {
                   <TableRow key={i}>
                     <TableCell>{item.kategori.nama_kategori}</TableCell>
                     <TableCell>{item.guru.nama}</TableCell>
-                    <TableCell>
+                    <TableCell sx={{ width: 200 }}>
                       <Link to={item._id || ""}>
                         <Button
                           className={style.actionBtn}

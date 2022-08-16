@@ -55,7 +55,7 @@ const AdminNews = () => {
                   <TableRow key={i}>
                     <TableCell>{item.judul}</TableCell>
                     <TableCell>{item.deskripsi}</TableCell>
-                    <TableCell>
+                    <TableCell sx={{ width: 200 }}>
                       <Link to={item.slug || ""}>
                         <Button
                           className={style.actionBtn}

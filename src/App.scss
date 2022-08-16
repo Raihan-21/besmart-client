@@ -58,7 +58,10 @@ $spacing: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24;
 }
 .auth-form{
   margin: auto;
-  max-width: 50%;
+  max-width: 60%;
+  @media screen and (min-width: 720px) {
+    max-width: 25%;
+  }
 }
 .flex{
   display: flex;

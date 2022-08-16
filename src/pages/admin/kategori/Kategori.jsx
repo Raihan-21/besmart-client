@@ -55,7 +55,7 @@ const Kagetori = () => {
                   <TableRow key={i}>
                     <TableCell>{item.nama_kategori}</TableCell>
                     <TableCell>{item.deskripsi}</TableCell>
-                    <TableCell>
+                    <TableCell sx={{ width: 200 }}>
                       <Link to={item._id || ""}>
                         <Button
                           className={style.actionBtn}

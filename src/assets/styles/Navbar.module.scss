@@ -84,7 +84,8 @@ a{
 }
 .homeNavbar{
     @extend .navbar;
-    width:  100%
+    width:  100%;
+    z-index: 10;
 }
 .loggedinNavbar{
     @extend .navbar;

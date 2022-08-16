@@ -39,7 +39,9 @@ const LoggedinNavbar = () => {
         anchorEl={anchorEl}
         open={open}
         onClose={() => setAnchorEl(null)}
-        PaperProps={{ style: { width: ref.current.offsetWidth } }}
+        PaperProps={{
+          style: { width: ref.current ? ref.current.offsetWidth : "" },
+        }}
       >
         <Link to="profil">
           <MenuItem>Profile</MenuItem>

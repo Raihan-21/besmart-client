@@ -38,7 +38,9 @@ const GuruNavbar = () => {
         anchorEl={anchorEl}
         open={open}
         onClose={() => setAnchorEl(null)}
-        PaperProps={{ style: { width: ref.current.offsetWidth } }}
+        PaperProps={{
+          style: { width: ref.current ? ref.current.offsetWidth : "" },
+        }}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={logoutHandler}>Logout</MenuItem>

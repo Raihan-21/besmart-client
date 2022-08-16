@@ -4,6 +4,7 @@ import styles from "../assets/styles/Register.module.css";
 import { Grid } from "@mui/material";
 import axios from "axios";
 import useFetch from "../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [kategori, isLoading] = useFetch("/api/admin/kategori");
@@ -12,21 +13,30 @@ const Register = () => {
     password: "",
     kategori: { _id: "" },
   });
+  const [error, setError] = useState({
+    username: "",
+  });
   const [hari, setHari] = useState([]);
+  const navigate = useNavigate();
   const register = useCallback(
     async (e) => {
       e.preventDefault();
+      setError({ username: "" });
       try {
         const res = await axios.post("/api/register", {
           ...formData,
           status: "diproses",
         });
         console.log(res.data);
+        navigate("/login");
       } catch (error) {
+        setError((prevState) => {
+          return { ...prevState, username: "Username sudah digunakan" };
+        });
         console.log(error.response);
       }
     },
-    [formData]
+    [formData, navigate]
   );
   useEffect(() => {
     const getData = async () => {
@@ -50,10 +60,10 @@ const Register = () => {
   }, [formData.kategori]);
   return (
     <div className={`auth-form ${styles.register}`}>
-      <form onSubmit={register}>
+      <form onSubmit={register} className="space-y-4">
         <h2 className={styles.h2}>Daftar</h2>
         <Grid container columnSpacing={2}>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="Nama Lengkap"
               variant="outlined"
@@ -68,7 +78,7 @@ const Register = () => {
               required
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="Username"
               variant="outlined"
@@ -81,9 +91,11 @@ const Register = () => {
                 }));
               }}
               required
+              error={error.username ? true : false}
+              helperText={error.username ? error.username : ""}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="Email"
               variant="outlined"
@@ -98,7 +110,7 @@ const Register = () => {
               required
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="No Hp"
               type="number"
@@ -115,7 +127,7 @@ const Register = () => {
             />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="Alamat"
               variant="outlined"
@@ -130,7 +142,7 @@ const Register = () => {
               required
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <TextField
               label="Password"
               variant="outlined"
@@ -150,9 +162,9 @@ const Register = () => {
 
         <Grid container columnSpacing={2} rowSpacing={3}>
           <Grid item xs={12}>
-            <h2 className="text-left">Pilih Kelas</h2>
+            <h3 className="text-left">Pilih Kelas</h3>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <Autocomplete
               disableClearable={true}
               options={!isLoading ? kategori : []}
@@ -169,7 +181,7 @@ const Register = () => {
               )}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item sm={6} xs={12}>
             <Autocomplete
               disabled={!formData.kategori._id ? true : false}
               options={hari}
