@@ -9,7 +9,7 @@ const AddMurid = () => {
   const formSubmit = useCallback(
     async (data) => {
       try {
-        const res = await axios.post(`/admin/murid`, data);
+        const res = await axios.post(`/api/admin/murid`, data);
         console.log(res.data);
         navigate("/admin/murid");
       } catch (error) {

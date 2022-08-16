@@ -15,7 +15,7 @@ const AdminMurid = () => {
   const [murid, setMurid] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("/admin/murid");
+      const res = await fetch("/api/admin/murid");
       const data = await res.json();
       setMurid(data.data);
     };
@@ -24,7 +24,7 @@ const AdminMurid = () => {
   const navigate = useNavigate();
   const deleteHandler = useCallback(
     async (username) => {
-      const res = await fetch(`/admin/murid/${username}`, {
+      const res = await fetch(`/api/admin/murid/${username}`, {
         method: "DELETE",
       });
       const resData = await res.json();

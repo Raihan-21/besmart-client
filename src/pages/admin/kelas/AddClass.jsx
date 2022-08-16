@@ -16,7 +16,7 @@ const AddClass = () => {
       delete payload.guru;
       delete payload.kategori;
       try {
-        const res = await axios.post(`/admin/kelas`, payload);
+        const res = await axios.post(`/api/admin/kelas`, payload);
         console.log(res.data);
         navigate("/admin/kelas");
       } catch (error) {

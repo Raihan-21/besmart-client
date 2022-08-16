@@ -5,7 +5,7 @@ import useFetch from "../../../hooks/useFetch";
 import axios from "axios";
 
 const FormMurid = ({ formData, onSubmit }) => {
-  const [kategori, isLoading] = useFetch("/admin/kategori");
+  const [kategori, isLoading] = useFetch("/api/admin/kategori");
   const [data, setData] = useState({});
   const [hari, setHari] = useState([]);
   useEffect(() => {
@@ -15,7 +15,7 @@ const FormMurid = ({ formData, onSubmit }) => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `/admin/kelas?filter[id_kategori]=${data.kategori._id}`
+          `/api/admin/kelas?filter[id_kategori]=${data.kategori._id}`
         );
         setHari(
           res.data.data.map((jadwal) => {

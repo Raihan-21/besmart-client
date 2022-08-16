@@ -8,11 +8,11 @@ import { Button } from "@mui/material";
 
 const EditMurid = () => {
   const params = useParams();
-  const [data, isLoading] = useFetch(`/admin/murid/${params.id}`);
+  const [data, isLoading] = useFetch(`/api/admin/murid/${params.id}`);
   const formSubmit = useCallback(
     async (data) => {
       try {
-        const res = await axios.put(`/admin/murid/${params.id}`, data);
+        const res = await axios.put(`/api/admin/murid/${params.id}`, data);
         console.log(res.data);
       } catch (error) {
         console.log(error.response);

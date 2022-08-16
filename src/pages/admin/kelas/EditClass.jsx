@@ -6,7 +6,7 @@ import FormClass from "./FormClass";
 import axios from "axios";
 const EditClass = () => {
   const params = useParams();
-  const [data, isLoading] = useFetch(`/admin/kelas/${params.id}`);
+  const [data, isLoading] = useFetch(`/api/admin/kelas/${params.id}`);
   const formSubmit = useCallback(
     async (data) => {
       const payload = {
@@ -17,7 +17,7 @@ const EditClass = () => {
       delete payload.guru;
       delete payload.kategori;
       try {
-        const res = await axios.put(`/admin/kelas/${params.id}`, payload);
+        const res = await axios.put(`/api/admin/kelas/${params.id}`, payload);
         console.log(res.data);
       } catch (error) {
         console.log(error.response);

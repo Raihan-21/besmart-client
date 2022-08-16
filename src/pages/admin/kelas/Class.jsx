@@ -14,12 +14,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Class = () => {
-  const [data, isLoading] = useFetch("/admin/kelas");
+  const [data, isLoading] = useFetch("/api/admin/kelas");
   const navigate = useNavigate();
   const deleteHandler = useCallback(
     async (slug) => {
       try {
-        const res = await axios.delete(`/admin/kelas/${slug}`);
+        const res = await axios.delete(`/api/admin/kelas/${slug}`);
         console.log(res.data);
         navigate(0);
       } catch (error) {

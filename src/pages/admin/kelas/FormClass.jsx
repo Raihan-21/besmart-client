@@ -30,9 +30,9 @@ const FormClass = ({ formData, onSubmit }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   // const [appointData, setAppointData] = useState([]);
   //eslint-disable-next-line
-  const [guru, guruLoading] = useFetch("/admin/guru");
+  const [guru, guruLoading] = useFetch("/api/admin/guru");
   //eslint-disable-next-line
-  const [kategori, kategoriLoading] = useFetch("/admin/kategori");
+  const [kategori, kategoriLoading] = useFetch("/api/admin/kategori");
   const commitChanges = useCallback(
     ({ added, changed, deleted }) => {
       let { jadwal } = data;

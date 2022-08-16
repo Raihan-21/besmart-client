@@ -6,11 +6,11 @@ import FormNews from "./FormNews";
 import axios from "axios";
 const EditNews = () => {
   const params = useParams();
-  const [data, isLoading] = useFetch(`/admin/berita/${params.slug}`);
+  const [data, isLoading] = useFetch(`/api/admin/berita/${params.slug}`);
   const formSubmit = useCallback(
     async (data) => {
       try {
-        const res = await axios.put(`/admin/berita/${params.slug}`, data);
+        const res = await axios.put(`/api/admin/berita/${params.slug}`, data);
         console.log(res.data);
       } catch (error) {
         console.log(error.response);

@@ -10,7 +10,7 @@ const AddNews = () => {
     async (data) => {
       const tanggal_buat = new Date().toISOString().slice(0, 10);
       try {
-        const res = await axios.post(`/admin/berita`, {
+        const res = await axios.post(`/api/admin/berita`, {
           ...data,
           tanggal_buat,
         });

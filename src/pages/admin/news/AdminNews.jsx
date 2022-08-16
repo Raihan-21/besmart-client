@@ -12,11 +12,11 @@ import style from "../../../assets/styles/Admin.module.scss";
 import useFetch from "../../../hooks/useFetch";
 import { Link } from "react-router-dom";
 const AdminNews = () => {
-  const [data, isLoading] = useFetch("/admin/berita");
+  const [data, isLoading] = useFetch("/api/admin/berita");
   const navigate = useNavigate();
   const deleteHandler = useCallback(
     async (slug) => {
-      const res = await fetch(`/admin/berita/${slug}`, {
+      const res = await fetch(`/api/admin/berita/${slug}`, {
         method: "DELETE",
       });
       const resData = await res.json();

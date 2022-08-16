@@ -9,7 +9,7 @@ const AddKategori = () => {
   const formSubmit = useCallback(
     async (data) => {
       try {
-        const res = await axios.post(`/admin/kategori`, data);
+        const res = await axios.post(`/api/admin/kategori`, data);
         console.log(res.data);
         navigate("/admin/kategori");
       } catch (error) {
