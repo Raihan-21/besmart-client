@@ -6,7 +6,7 @@ import axios from "axios";
 import useFetch from "../hooks/useFetch";
 
 const Register = () => {
-  const [kategori, isLoading] = useFetch("/admin/kategori");
+  const [kategori, isLoading] = useFetch("/api/admin/kategori");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,7 +17,7 @@ const Register = () => {
     async (e) => {
       e.preventDefault();
       try {
-        const res = await axios.post("/register", {
+        const res = await axios.post("/api/register", {
           ...formData,
           status: "diproses",
         });
@@ -32,7 +32,7 @@ const Register = () => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          `/admin/kelas?filter[id_kategori]=${formData.kategori._id}`
+          `/api/admin/kelas?filter[id_kategori]=${formData.kategori._id}`
         );
         setHari(
           res.data.data.map((jadwal) => {
@@ -65,6 +65,7 @@ const Register = () => {
                   nama: e.target.value,
                 }));
               }}
+              required
             />
           </Grid>
           <Grid item xs={6}>
@@ -79,6 +80,7 @@ const Register = () => {
                   username: e.target.value,
                 }));
               }}
+              required
             />
           </Grid>
           <Grid item xs={6}>
@@ -93,6 +95,7 @@ const Register = () => {
                   email: e.target.value,
                 }));
               }}
+              required
             />
           </Grid>
           <Grid item xs={6}>
@@ -108,6 +111,7 @@ const Register = () => {
                   no_hp: e.target.value,
                 }));
               }}
+              required
             />
           </Grid>
 
@@ -123,6 +127,7 @@ const Register = () => {
                   alamat: e.target.value,
                 }));
               }}
+              required
             />
           </Grid>
           <Grid item xs={6}>
@@ -138,6 +143,7 @@ const Register = () => {
                   password: e.target.value,
                 }));
               }}
+              required
             />
           </Grid>
         </Grid>
@@ -158,7 +164,9 @@ const Register = () => {
               }}
               getOptionLabel={(opt) => opt.nama_kategori}
               isOptionEqualToValue={(option, value) => option._id === value._id}
-              renderInput={(param) => <TextField {...param} label="Kategori" />}
+              renderInput={(param) => (
+                <TextField {...param} label="Kategori" required />
+              )}
             />
           </Grid>
           <Grid item xs={6}>
@@ -175,7 +183,9 @@ const Register = () => {
                 return opt.hari;
               }}
               isOptionEqualToValue={(option, value) => option._id === value._id}
-              renderInput={(param) => <TextField {...param} label="Jadwal" />}
+              renderInput={(param) => (
+                <TextField {...param} label="Jadwal" required />
+              )}
             />
           </Grid>
         </Grid>

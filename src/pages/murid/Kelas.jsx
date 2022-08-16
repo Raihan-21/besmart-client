@@ -37,7 +37,7 @@ ChartJS.register(
 );
 const Kelas = () => {
   const user = useSelector((state) => state.user.user);
-  const [data, isLoading] = useFetch(`/kelas/${user.username}`);
+  const [data, isLoading] = useFetch(`/api/kelas/${user.username}`);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [tabValue, setTabValue] = useState(0);
   const [validLog, setValidLog] = useState(false);

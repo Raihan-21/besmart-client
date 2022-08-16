@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/material";
 const Classes = () => {
-  const [data, isLoading] = useFetch("/kategori");
+  const [data, isLoading] = useFetch("/api/kategori");
   return (
     <div className={`container ${styles.classContainer}`}>
       <h2 className="text-left">Seluruh Kelas Kami</h2>

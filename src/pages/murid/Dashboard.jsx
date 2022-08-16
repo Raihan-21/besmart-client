@@ -2,7 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import styles from "../../assets/styles/User.module.scss";
 
 const Dashboard = () => {
-  const [data, isLoading] = useFetch("/berita");
+  const [data, isLoading] = useFetch("/api/berita");
   return (
     <div className={`text-left ${styles.userContainer}`}>
       <h3>Dashboard</h3>

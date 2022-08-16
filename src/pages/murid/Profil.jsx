@@ -16,7 +16,7 @@ import { setName } from "../../slices/userSlice";
 
 const Profil = () => {
   const user = useSelector((state) => state.user.user);
-  const [data, isLoading] = useFetch(`/profile/${user.username}`);
+  const [data, isLoading] = useFetch(`/api/profile/${user.username}`);
   const [formData, setFormData] = useState({});
   const [submitLoading, setSubmitLoading] = useState(false);
   const [feedback, setFeedback] = useState({});
@@ -26,7 +26,7 @@ const Profil = () => {
       e.preventDefault();
       setSubmitLoading(true);
       try {
-        const res = await axios.put(`/profile/${user.username}`, formData);
+        const res = await axios.put(`/api/profile/${user.username}`, formData);
         setFeedback({
           isSuccess: true,
           message: res.data.message,

@@ -14,7 +14,7 @@ const Login = () => {
     async (e) => {
       e.preventDefault();
       try {
-        const res = await axios.post("/login", formData);
+        const res = await axios.post("/api/login", formData);
         setError({ username: "", password: "" });
         dispatch(login(res.data.data));
         navigate("/murid");
