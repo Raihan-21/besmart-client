@@ -8,6 +8,7 @@ const AddKategori = () => {
   const navigate = useNavigate();
   const formSubmit = useCallback(
     async (data) => {
+      console.log(data);
       try {
         const res = await axios.post(`/api/admin/kategori`, data);
         console.log(res.data);

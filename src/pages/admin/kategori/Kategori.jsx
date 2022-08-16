@@ -56,7 +56,7 @@ const Kagetori = () => {
                     <TableCell>{item.nama_kategori}</TableCell>
                     <TableCell>{item.deskripsi}</TableCell>
                     <TableCell sx={{ width: 200 }}>
-                      <Link to={item._id || ""}>
+                      <Link to={item.slug || ""}>
                         <Button
                           className={style.actionBtn}
                           color="primary"
@@ -71,7 +71,7 @@ const Kagetori = () => {
                         color="error"
                         variant="contained"
                         onClick={() => {
-                          deleteHandler(item._id);
+                          deleteHandler(item.slug);
                         }}
                       >
                         Hapus

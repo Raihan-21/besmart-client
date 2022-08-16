@@ -6,11 +6,11 @@ import FormKategori from "./FormKategori";
 import axios from "axios";
 const EditKategori = () => {
   const params = useParams();
-  const [data, isLoading] = useFetch(`/api/admin/kategori/${params.id}`);
+  const [data, isLoading] = useFetch(`/api/admin/kategori/${params.slug}`);
   const formSubmit = useCallback(
     async (data) => {
       try {
-        const res = await axios.put(`/api/admin/kategori/${params.id}`, data);
+        const res = await axios.put(`/api/admin/kategori/${params.slug}`, data);
         console.log(res.data);
       } catch (error) {
         console.log(error.response);

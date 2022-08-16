@@ -115,7 +115,7 @@ function App() {
               <Route path="berita/:slug" element={<EditNews />} />
               <Route path="kategori" element={<Kagetori />} />
               <Route path="kategori/tambah" element={<AddKategori />} />
-              <Route path="kategori/:id" element={<EditKategori />} />
+              <Route path="kategori/:slug" element={<EditKategori />} />
               <Route path="kelas" element={<Class />} />
               <Route path="kelas/tambah" element={<AddClass />} />
               <Route path="kelas/:id" element={<EditClass />} />
