@@ -27,7 +27,7 @@ const Login = () => {
   return (
     <div className={`auth-form ${styles.login}`}>
       <form onSubmit={loginHandler}>
-        <h2 className={styles.h2}>Login</h2>
+        <h2 className={styles.h2}>Masuk</h2>
         <TextField
           label="Username"
           variant="outlined"

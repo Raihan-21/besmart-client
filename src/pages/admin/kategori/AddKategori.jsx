@@ -8,9 +8,16 @@ const AddKategori = () => {
   const navigate = useNavigate();
   const formSubmit = useCallback(
     async (data) => {
-      console.log(data);
+      const formData = new FormData();
+      formData.append("nama_kategori", data.nama_kategori);
+      formData.append("deskripsi", data.deskripsi);
+      formData.append("image", data.image);
       try {
-        const res = await axios.post(`/api/admin/kategori`, data);
+        const res = await axios.post(`/api/admin/kategori`, formData, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        });
         console.log(res.data);
         navigate("/admin/kategori");
       } catch (error) {

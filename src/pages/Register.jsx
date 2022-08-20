@@ -159,7 +159,6 @@ const Register = () => {
             />
           </Grid>
         </Grid>
-
         <Grid container columnSpacing={2} rowSpacing={3}>
           <Grid item xs={12}>
             <h3 className="text-left">Pilih Kelas</h3>
@@ -207,7 +206,7 @@ const Register = () => {
           variant="contained"
           className={styles.registerBtn}
         >
-          Register
+          Daftar
         </Button>
       </form>
     </div>

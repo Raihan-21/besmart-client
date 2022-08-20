@@ -22,6 +22,13 @@ const Navbar = () => {
         >
           Home
         </Link>
+        <Link
+          to="/kelas"
+          className={tab === "kelas" ? styles.active : ""}
+          onClick={() => setTab("kelas")}
+        >
+          Kelas
+        </Link>
       </div>
       <div>
         <Link to="/login" className={styles.loginBtn}>

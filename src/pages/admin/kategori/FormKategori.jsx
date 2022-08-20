@@ -2,11 +2,9 @@ import styles from "../../../assets/styles/Admin.module.scss";
 import { Button, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { Grid, Input } from "@mui/material";
-import { useParams } from "react-router-dom";
 
 const FormKategori = ({ formData, onSubmit }) => {
   const [data, setData] = useState({});
-  const params = useParams();
   useEffect(() => {
     setData(formData);
   }, [formData]);
@@ -53,19 +51,40 @@ const FormKategori = ({ formData, onSubmit }) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Input
-                name="image"
-                type="file"
-                fullWidth
-                inputProps={{
-                  accept: ["image/png", " image/gif", "image/jpeg"],
-                }}
-                onChange={(e) => {
-                  setData((prevState) => {
-                    return { ...prevState, image: e.target.files[0] };
-                  });
-                }}
-              />
+              <Grid container>
+                <Grid item xs={3}>
+                  {" "}
+                  <Button variant="contained" component="label">
+                    Upload
+                    <input
+                      hidden
+                      // width={"100%"}
+                      name="image"
+                      type="file"
+                      accept="image/*"
+                      // fullWidth
+                      // inputProps={{
+                      //   accept: ["image/png", " image/gif", "image/jpeg"],
+                      // }}
+                      // value={{
+                      //   name: "admin.drawio.png",
+                      //   type: "image/png",
+                      // }}
+                      onChange={(e) => {
+                        setData((prevState) => {
+                          console.log(e.target.files[0]);
+                          return { ...prevState, image: e.target.files[0] };
+                        });
+                      }}
+                    />
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  {data && data.image && (
+                    <div className="text-left">{data.image.name}</div>
+                  )}
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
           <Button type="submit" color="primary" variant="contained">

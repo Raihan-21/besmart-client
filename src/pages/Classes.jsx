@@ -23,7 +23,7 @@ const Classes = () => {
                 >
                   <img src={img} alt="" />
                   <div className="space-y-4">
-                    <h3>{item.nama_mapel}</h3>
+                    <h3>{item.nama_kategori}</h3>
                     <p>{item.deskripsi}</p>
                     <Link to="/register">
                       <Button variant="contained"> Ambil Kelas</Button>
