@@ -78,6 +78,25 @@ const FormClass = ({ formData, onSubmit }) => {
           }}
         >
           <Grid container columnSpacing={2} rowSpacing={3}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="keterangan"
+                label="Keterangan"
+                variant="outlined"
+                fullWidth
+                required
+                helperText={"contoh: Kelas 3"}
+                value={data ? (data.keterangan ? data.keterangan : "") : ""}
+                onChange={(e) => {
+                  setData((prevState) => {
+                    return {
+                      ...prevState,
+                      keterangan: e.target.value,
+                    };
+                  });
+                }}
+              />
+            </Grid>
             <Grid item sm={6} xs={12}>
               <Autocomplete
                 getOptionLabel={(opt) => opt.nama_kategori || ""}
@@ -136,6 +155,25 @@ const FormClass = ({ formData, onSubmit }) => {
                 )}
               />
             </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="maksimal_murid"
+                label="Jumlah Maksimal Murid"
+                type="number"
+                variant="outlined"
+                fullWidth
+                required
+                value={data ? (data.max_murid ? data.max_murid : "") : ""}
+                onChange={(e) => {
+                  setData((prevState) => {
+                    return {
+                      ...prevState,
+                      max_murid: e.target.value,
+                    };
+                  });
+                }}
+              />
+            </Grid>
             <Grid item sm={3} xs={12}>
               <Autocomplete
                 getOptionLabel={(opt) => opt.label || ""}
@@ -168,6 +206,7 @@ const FormClass = ({ formData, onSubmit }) => {
                 )}
               />
             </Grid>
+
             <Grid item sm={3} xs={12}>
               <Autocomplete
                 getOptionLabel={(opt) => opt.label || ""}
@@ -202,7 +241,7 @@ const FormClass = ({ formData, onSubmit }) => {
             </Grid>
           </Grid>
           <Button type="submit" color="primary" variant="contained">
-            Save
+            Simpan
           </Button>
         </form>
         <div>

@@ -4,12 +4,13 @@ import AdminSidebar from "../components/AdminSidebar";
 import Navbar from "../components/Navbar";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { login } from "../slices/adminSlice";
+import { adminLogin } from "../slices/adminSlice";
 import { guruLogin } from "../slices/userSlice";
 import MuridSidebar from "../components/MuridSidebar";
 import LoggedinNavbar from "../components/LoggedinNavbar";
 import GuruSidebar from "../components/GuruSidebar";
 import GuruNavbar from "../components/GuruNavbar";
+import Footer from "../components/Footer";
 // import { useNavigate } from "react-router-dom";
 
 const MainLayout = () => {
@@ -17,6 +18,7 @@ const MainLayout = () => {
     <div>
       <Navbar />
       <Outlet />
+      <Footer />
     </div>
   );
 };
@@ -57,7 +59,7 @@ const AdminBlankLayout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.getItem("admin")) {
-      dispatch(login());
+      dispatch(adminLogin());
     }
   }, [dispatch]);
   return (
@@ -73,7 +75,7 @@ const GuruBlankLayout = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.getItem("guru")) {
-      dispatch(guruLogin());
+      dispatch(guruLogin(localStorage.getItem("guru")));
     }
   }, [dispatch]);
   return (

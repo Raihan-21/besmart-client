@@ -4,12 +4,13 @@ import { useState, useEffect } from "react";
 import useFetch from "../../../hooks/useFetch";
 import axios from "axios";
 
-const FormMurid = ({ formData, onSubmit }) => {
-  const [kategori, isLoading] = useFetch("/api/admin/kategori");
+const FormMurid = ({ formData, onSubmit, error }) => {
   const [data, setData] = useState({});
+  const [kategori, isLoading] = useFetch("/api/admin/kategori");
+
   const [hari, setHari] = useState([]);
   useEffect(() => {
-    setData(formData);
+    if (formData) setData(formData);
   }, [formData]);
   useEffect(() => {
     const getData = async () => {
@@ -21,7 +22,9 @@ const FormMurid = ({ formData, onSubmit }) => {
           res.data.data.map((jadwal) => {
             return {
               _id: jadwal._id,
-              hari: jadwal.hari.map((hari) => hari.label).join(" & "),
+              hari: `${jadwal.keterangan}, ${jadwal.hari
+                .map((hari) => hari.label)
+                .join(" & ")}`,
             };
           })
         );
@@ -43,16 +46,20 @@ const FormMurid = ({ formData, onSubmit }) => {
           <Grid container columnSpacing={2}>
             <Grid item xs={6}>
               <TextField
+                disabled={formData ? true : false}
                 label="Username"
                 variant="outlined"
                 margin="normal"
                 fullWidth
+                required
                 value={data ? (data.username ? data.username : "") : ""}
                 onChange={(e) => {
                   setData((prevState) => {
                     return { ...prevState, username: e.target.value };
                   });
                 }}
+                error={error ? (error.username ? true : false) : false}
+                helperText={error ? (error.username ? error.username : "") : ""}
               />
             </Grid>
             <Grid item xs={6}>
@@ -61,6 +68,7 @@ const FormMurid = ({ formData, onSubmit }) => {
                 variant="outlined"
                 margin="normal"
                 fullWidth
+                required
                 value={data ? (data.nama ? data.nama : "") : ""}
                 onChange={(e) => {
                   setData((prevState) => {
@@ -75,6 +83,7 @@ const FormMurid = ({ formData, onSubmit }) => {
                 variant="outlined"
                 margin="normal"
                 fullWidth
+                required
                 value={data ? (data.alamat ? data.alamat : "") : ""}
                 onChange={(e) => {
                   setData((prevState) => {
@@ -89,6 +98,7 @@ const FormMurid = ({ formData, onSubmit }) => {
                 variant="outlined"
                 margin="normal"
                 fullWidth
+                required
                 value={data ? (data.no_hp ? data.no_hp : "") : ""}
                 onChange={(e) => {
                   setData((prevState) => {
@@ -116,7 +126,7 @@ const FormMurid = ({ formData, onSubmit }) => {
                   option._id === value._id
                 }
                 renderInput={(param) => (
-                  <TextField {...param} label="Kategori" />
+                  <TextField {...param} label="Kategori" required />
                 )}
               />
             </Grid>
@@ -137,13 +147,15 @@ const FormMurid = ({ formData, onSubmit }) => {
                 isOptionEqualToValue={(option, value) =>
                   option._id === value._id
                 }
-                renderInput={(param) => <TextField {...param} label="Jadwal" />}
+                renderInput={(param) => (
+                  <TextField {...param} label="Jadwal" required />
+                )}
               />
             </Grid>
           </Grid>
 
           <Button type="submit" color="primary" variant="contained">
-            Save
+            Simpan
           </Button>
         </form>
       </div>

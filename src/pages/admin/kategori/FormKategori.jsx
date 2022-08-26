@@ -24,6 +24,7 @@ const FormKategori = ({ formData, onSubmit }) => {
                 variant="outlined"
                 margin="normal"
                 fullWidth
+                required
                 value={
                   data ? (data.nama_kategori ? data.nama_kategori : "") : ""
                 }
@@ -42,6 +43,7 @@ const FormKategori = ({ formData, onSubmit }) => {
                 multiline
                 maxRows={4}
                 fullWidth
+                required
                 value={data ? (data.deskripsi ? data.deskripsi : "") : ""}
                 onChange={(e) => {
                   setData((prevState) => {
@@ -62,6 +64,7 @@ const FormKategori = ({ formData, onSubmit }) => {
                       name="image"
                       type="file"
                       accept="image/*"
+                      required
                       // fullWidth
                       // inputProps={{
                       //   accept: ["image/png", " image/gif", "image/jpeg"],
@@ -88,7 +91,7 @@ const FormKategori = ({ formData, onSubmit }) => {
             </Grid>
           </Grid>
           <Button type="submit" color="primary" variant="contained">
-            Save
+            Simpan
           </Button>
         </form>
       </div>

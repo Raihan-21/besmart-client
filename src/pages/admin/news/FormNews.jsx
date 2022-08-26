@@ -43,6 +43,7 @@ const FormNews = ({ formData, onSubmit }) => {
                 variant="outlined"
                 margin="normal"
                 fullWidth
+                required
                 value={data ? (data.judul ? data.judul : "") : ""}
                 onChange={(e) => {
                   setData((prevState) => {
@@ -96,7 +97,7 @@ const FormNews = ({ formData, onSubmit }) => {
             </Grid>
           </Grid>
           <Button type="submit" color="primary" variant="contained">
-            Save
+            Simpan
           </Button>
         </form>
       </div>

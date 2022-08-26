@@ -23,9 +23,11 @@ import { Line } from "react-chartjs-2";
 import { ViewState } from "@devexpress/dx-react-scheduler";
 import { useSelector } from "react-redux";
 import useFetch from "../../hooks/useFetch";
-import { Button, Tab, Tabs } from "@mui/material";
+import { Button, Tab, Tabs, TextField } from "@mui/material";
 import { useCallback } from "react";
 import axios from "axios";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -42,6 +44,7 @@ const Kelas = () => {
   const [tabValue, setTabValue] = useState(0);
   const [validLog, setValidLog] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
+  const [year, setYear] = useState(new Date().getFullYear());
   const [chartData, setChartData] = useState({
     labels: ["Januari", "Februari"],
     datasets: [{}],
@@ -51,9 +54,7 @@ const Kelas = () => {
     if (data.jadwal)
       setValidLog(
         data.jadwal.some((kelas) =>
-          kelas.startDate.includes(
-            new Date("2022-08-09").toISOString().slice(0, 10)
-          )
+          kelas.startDate.includes(new Date().toISOString().slice(0, 10))
         )
       );
     setIsLogged(data.isLogged);
@@ -71,7 +72,7 @@ const Kelas = () => {
   }, [data]);
   const absenHandler = useCallback(async () => {
     try {
-      const res = await axios.put(`/absen/${user.username}`, {
+      const res = await axios.put(`/api/absen/${user.username}`, {
         date: new Date().toISOString().slice(0, 10),
       });
       console.log(res.data);
@@ -93,48 +94,72 @@ const Kelas = () => {
   return (
     <div className={styles.userContainer}>
       <h3 className="text-left">Kelas</h3>
-      <Tabs
-        value={tabValue}
-        onChange={(e, value) => {
-          setTabValue(value);
-        }}
-      >
-        <Tab label="Jadwal" />
-        <Tab label="Absen" />
-      </Tabs>
-      {tabValue === 0 ? (
-        <Scheduler data={!isLoading ? data.jadwal : []}>
-          <ViewState
-            currentDate={currentDate}
-            onCurrentDateChange={(date) => setCurrentDate(date)}
-          />
-          <Toolbar />
-          <DateNavigator />
-          <TodayButton />
-          <MonthView />
-          <Appointments />
-          <AppointmentTooltip />
-        </Scheduler>
-      ) : (
-        <div className="space-y-8">
-          {absenComponent()}
-          {/* {validLog ? (
+      {!isLoading && (
+        <>
+          <p className="text-left">
+            {data.kategori && data.kategori.nama_kategori}
+          </p>
+          <Tabs
+            value={tabValue}
+            onChange={(e, value) => {
+              setTabValue(value);
+            }}
+            sx={{ marginBottom: 3 }}
+          >
+            <Tab label="Jadwal" />
+            <Tab label="Absen" />
+          </Tabs>
+          {tabValue === 0 ? (
+            <Scheduler data={!isLoading ? data.jadwal : []}>
+              <ViewState
+                currentDate={currentDate}
+                onCurrentDateChange={(date) => setCurrentDate(date)}
+              />
+              <Toolbar />
+              <DateNavigator />
+              <TodayButton />
+              <MonthView />
+              <Appointments />
+              <AppointmentTooltip />
+            </Scheduler>
+          ) : (
+            <div className="space-y-8">
+              {absenComponent()}
+              {/* {validLog ? (
             <Button variant="contained" color="primary" onClick={absenHandler}>
               Klik untuk absen
             </Button>
           ) : (
             <div className="text-center">Hari ini bukan jadwal kamu</div>
           )} */}
-          <div className="space-y-4">
-            <h4>Statistik kehadiran</h4>
-            <Line
-              data={chartData}
-              options={{
-                responsive: true,
-              }}
-            />
-          </div>
-        </div>
+              <div className="space-y-4">
+                <h4>Statistik kehadiran</h4>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                    views={["year"]}
+                    value={year}
+                    ampm="false"
+                    inputFormat="yyyy-mm-dd"
+                    onChange={(value) => {
+                      console.log(value);
+                      setYear(value);
+                    }}
+                    renderInput={(params) => (
+                      <TextField {...params} size="small" />
+                    )}
+                  />
+                </LocalizationProvider>
+
+                <Line
+                  data={chartData}
+                  options={{
+                    responsive: true,
+                  }}
+                />
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

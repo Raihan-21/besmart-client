@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../slices/adminSlice";
+import { adminLogin } from "../../slices/adminSlice";
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState({});
@@ -12,7 +12,7 @@ const AdminLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    if (loggedIn) navigate("/admin/dashboard");
+    if (loggedIn) navigate("/admin/murid");
   }, [navigate, loggedIn]);
   const loginHandler = useCallback(
     async (e) => {
@@ -20,11 +20,10 @@ const AdminLogin = () => {
       try {
         // eslint-disable-next-line
         const res = await axios.post("/admin/login", formData);
-
         setError({});
-        dispatch(login());
+        dispatch(adminLogin());
         localStorage.setItem("admin", res.data.data.username);
-        navigate("/admin/dashboard");
+        navigate("/admin/murid");
       } catch (error) {
         setError(error.response.data);
       }
@@ -33,11 +32,11 @@ const AdminLogin = () => {
   );
   return (
     <div className={`auth-form ${styles.login}`}>
-      <h2 className={styles.h2}>Login</h2>
+      <h2 className={`${styles.h2} text-left`}>Masuk</h2>
       <form onSubmit={loginHandler}>
         <TextField
           label="Username"
-          variant="standard"
+          variant="outlined"
           fullWidth
           margin="normal"
           value={formData.username}
@@ -52,7 +51,7 @@ const AdminLogin = () => {
         />
         <TextField
           label="Password"
-          variant="standard"
+          variant="outlined"
           fullWidth
           margin="normal"
           type="password"
@@ -67,7 +66,7 @@ const AdminLogin = () => {
           helperText={error.password}
         />
         <Button type="submit" variant="contained" className={styles.loginBtn}>
-          Login
+          Masuk
         </Button>
       </form>
     </div>

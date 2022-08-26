@@ -1,11 +1,20 @@
 .classContainer{
-    padding-top: 100px;
+    padding: 100px 100px 200px 100px;
+    .classes {
+        img{
+        height: 250px;
+        width: 250px;
+        .class{
+            .content{
+                width: 50%;
+            }
+            @media screen and (min-width: 720px) {
+                flex-direction: column;
+            }
+        }
+
+    }
 }
-.classes img{
-    height: 250px;
+
 }
-// .class:first-child{
-//     flex-direction: row-reverse;
-//     background-color: red;
-// }
 

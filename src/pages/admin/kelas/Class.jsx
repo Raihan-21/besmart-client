@@ -42,10 +42,12 @@ const Class = () => {
       {!isLoading && (
         <TableContainer component={Paper}>
           <Table>
-            <TableHead>
+            <TableHead sx={{ backgroundColor: "#c9c9c9" }}>
               <TableRow>
                 <TableCell>Kategori</TableCell>
+                <TableCell>Keterangan</TableCell>
                 <TableCell>Guru</TableCell>
+                <TableCell>Hari</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
@@ -54,7 +56,11 @@ const Class = () => {
                 data.map((item, i) => (
                   <TableRow key={i}>
                     <TableCell>{item.kategori.nama_kategori}</TableCell>
+                    <TableCell>{item.keterangan}</TableCell>
                     <TableCell>{item.guru.nama}</TableCell>
+                    <TableCell>
+                      {item.hari.map((item) => item.label).join(" & ")}
+                    </TableCell>
                     <TableCell sx={{ width: 200 }}>
                       <Link to={item._id || ""}>
                         <Button

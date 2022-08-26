@@ -1,6 +1,6 @@
 .home{
-    margin: 100px 0 50px 0;
-    padding: 0 100px;
+    margin: 100px 0 0 0;
+    padding: 0 100px 200px 100px;
 }
 
 .home h1{
@@ -43,4 +43,13 @@
 }
 .courseHome img{
     height: 200px;
+    width: 100%;
+}
+.footer{
+    background-color: rgb(197, 197, 197);
+    padding: 20px 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
 }

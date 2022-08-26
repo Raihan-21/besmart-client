@@ -1,5 +1,7 @@
 .App {
+  min-height: 100%;
   text-align: center;
+  position: relative;
 }
 *{
   margin: 0;
@@ -46,6 +48,12 @@ $spacing: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24;
   .space-y-#{$space}{
     & > *:not(:last-child){
       margin-bottom: $space * 0.25rem;
+    }
+    
+  }
+  .space-x-#{$space}{
+    & > *:not(:last-child){
+      margin-right: $space * 0.25rem;
     }
     
   }
@@ -105,6 +113,27 @@ $spacing: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24;
 
 .full-width{
   margin-left: 0;
+}
+.diproses{
+  background-color: lighten($color: gray, $amount: 40) ;
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: gray !important;
+}
+.diterima{
+  background-color: lighten($color: #06a706, $amount: 55) ;
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: #06a706 !important;
+}
+.ditolak{
+  background-color: lighten($color: red, $amount: 40);
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: red !important;
+}
+.text-cap{
+  text-transform: capitalize;
 }
 
 /* Library Styling */

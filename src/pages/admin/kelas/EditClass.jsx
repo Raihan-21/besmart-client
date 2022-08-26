@@ -1,12 +1,13 @@
 import { useCallback } from "react";
 import useFetch from "../../../hooks/useFetch";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "../../../assets/styles/Admin.module.scss";
 import FormClass from "./FormClass";
 import axios from "axios";
 const EditClass = () => {
   const params = useParams();
   const [data, isLoading] = useFetch(`/api/admin/kelas/${params.id}`);
+  const navigate = useNavigate();
   const formSubmit = useCallback(
     async (data) => {
       const payload = {
@@ -19,11 +20,12 @@ const EditClass = () => {
       try {
         const res = await axios.put(`/api/admin/kelas/${params.id}`, payload);
         console.log(res.data);
+        navigate("/admin/kelas");
       } catch (error) {
         console.log(error.response);
       }
     },
-    [params.id]
+    [params.id, navigate]
   );
   return (
     <div

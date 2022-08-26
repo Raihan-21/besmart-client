@@ -27,7 +27,7 @@ const GuruLogin = () => {
   return (
     <div className={`auth-form ${styles.login}`}>
       <form onSubmit={loginHandler}>
-        <h2 className={styles.h2}>Login</h2>
+        <h2 className={styles.h2}>Masuk</h2>
         <TextField
           label="Username"
           variant="standard"
@@ -60,7 +60,7 @@ const GuruLogin = () => {
           }}
         />
         <Button type="submit" variant="contained" className={styles.loginBtn}>
-          Login
+          Masuk
         </Button>
       </form>
     </div>

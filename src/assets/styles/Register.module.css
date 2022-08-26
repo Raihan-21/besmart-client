@@ -1,6 +1,9 @@
-:global(.auth-form).register{
+.registerContainer{
     margin-top: 6em;
-    margin-bottom: 30px;
+    padding-bottom: 200px;
+}
+:global(.auth-form).register{
+
     padding: 2em;
     border-radius: .75em;
     border: 1px solid grey;

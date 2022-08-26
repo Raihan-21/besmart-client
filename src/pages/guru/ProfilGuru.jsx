@@ -74,6 +74,7 @@ const ProfilGuru = () => {
                 <TextField
                   label="Username"
                   fullWidth
+                  disabled
                   value={
                     formData ? (formData.username ? formData.username : "") : ""
                   }

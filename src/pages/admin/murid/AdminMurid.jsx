@@ -11,6 +11,7 @@ import { CircularProgress } from "@mui/material";
 import { Button } from "@mui/material";
 import style from "../../../assets/styles/Admin.module.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const AdminMurid = () => {
   const [murid, setMurid] = useState([]);
   useEffect(() => {
@@ -24,15 +25,13 @@ const AdminMurid = () => {
   const navigate = useNavigate();
   const deleteHandler = useCallback(
     async (username) => {
-      const res = await fetch(`/api/admin/murid/${username}`, {
-        method: "DELETE",
-      });
-      const resData = await res.json();
-      if (resData.error) {
-        console.log(resData.error);
-        return;
+      try {
+        const res = await axios.delete(`/api/admin/murid/${username}`);
+        console.log(res.data.data);
+        navigate(0);
+      } catch (error) {
+        console.log(error.response);
       }
-      navigate(0);
     },
     [navigate]
   );
@@ -49,11 +48,12 @@ const AdminMurid = () => {
       {murid ? (
         <TableContainer component={Paper}>
           <Table>
-            <TableHead>
+            <TableHead sx={{ backgroundColor: "#c9c9c9" }}>
               <TableRow>
                 <TableCell>Nama</TableCell>
                 <TableCell>Alamat</TableCell>
                 <TableCell>No hp</TableCell>
+                <TableCell>Status</TableCell>
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
@@ -63,6 +63,12 @@ const AdminMurid = () => {
                   <TableCell>{item.nama}</TableCell>
                   <TableCell>{item.alamat}</TableCell>
                   <TableCell>{item.no_hp}</TableCell>
+                  <TableCell>
+                    {" "}
+                    <span className={`${item.status} text-cap`}>
+                      {item.status}
+                    </span>
+                  </TableCell>
                   <TableCell sx={{ width: 200 }}>
                     <Link to={item.username}>
                       <Button

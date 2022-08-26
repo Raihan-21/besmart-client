@@ -41,7 +41,7 @@ const AdminGuru = () => {
 
       <TableContainer component={Paper}>
         <Table>
-          <TableHead>
+          <TableHead sx={{ backgroundColor: "#c9c9c9" }}>
             <TableRow>
               <TableCell>Nama</TableCell>
               <TableCell>Alamat</TableCell>

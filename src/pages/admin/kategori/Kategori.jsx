@@ -42,7 +42,7 @@ const Kagetori = () => {
       {!isLoading && (
         <TableContainer component={Paper}>
           <Table>
-            <TableHead>
+            <TableHead sx={{ backgroundColor: "#c9c9c9" }}>
               <TableRow>
                 <TableCell>Nama</TableCell>
                 <TableCell>Deskripsi</TableCell>

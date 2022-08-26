@@ -42,7 +42,7 @@ const AdminNews = () => {
       {!isLoading && (
         <TableContainer component={Paper}>
           <Table>
-            <TableHead>
+            <TableHead sx={{ backgroundColor: "#c9c9c9" }}>
               <TableRow>
                 <TableCell>judul</TableCell>
                 <TableCell>Deskripsi</TableCell>

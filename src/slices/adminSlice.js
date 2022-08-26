@@ -9,14 +9,14 @@ const adminSlice = createSlice({
     setToken: (state, action) => {
       console.log(action);
     },
-    login: (state) => {
+    adminLogin: (state) => {
       state.loggedIn = true;
     },
-    logout: (state) => {
+    adminLogout: (state) => {
       state.loggedIn = false;
       localStorage.removeItem("admin");
     },
   },
 });
-export const { login, logout, setToken } = adminSlice.actions;
+export const { adminLogin, adminLogout, setToken } = adminSlice.actions;
 export default adminSlice.reducer;

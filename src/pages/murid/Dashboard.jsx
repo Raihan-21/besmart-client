@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className={`text-left ${styles.userContainer}`}>
       <h3>Dashboard</h3>
-      <div>
+      <div class="space-y-4">
         {!isLoading &&
           data.map((item, i) => (
             <div key={i}>
@@ -18,6 +18,7 @@ const Dashboard = () => {
                 dangerouslySetInnerHTML={{ __html: item.deskripsi }}
                 className={styles.newsContent}
               />
+              <hr />
             </div>
           ))}
       </div>

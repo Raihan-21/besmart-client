@@ -1,8 +1,10 @@
+import { Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import illustration from "../assets/img/illustration.png";
-import highschool from "../assets/img/sma.png";
 import styles from "../assets/styles/Home.module.css";
+import useFetch from "../hooks/useFetch";
 const Home = () => {
+  const [data, isLoading] = useFetch("/api/admin/kategori?page[size]=4");
   return (
     <div className={`container  ${styles.home}`}>
       <div className={`${styles.banner} flex justify-between`}>
@@ -25,24 +27,20 @@ const Home = () => {
       </div>
       <div className={styles.courseHome}>
         <h2 className="text-center">Telusuri kelas-kelas kami</h2>
-        <div className="flex justify-between">
-          <div className={styles.card}>
-            <img src={highschool} alt="" />
-            <h3>Sekolah Menengah Atas</h3>
-          </div>
-          <div className={styles.card}>
-            <img src={highschool} alt="" />
-            <h3>Sekolah Menengah Atas</h3>
-          </div>
-          <div className={styles.card}>
-            <img src={highschool} alt="" />
-            <h3>Sekolah Menengah Atas</h3>
-          </div>
-          <div className={styles.card}>
-            <img src={highschool} alt="" />
-            <h3>Sekolah Menengah Atas</h3>
-          </div>
-        </div>
+        <Grid container columnSpacing={2} rowSpacing={3}>
+          {!isLoading &&
+            data.map((kategori, i) => (
+              <Grid item xs={12} sm={12} md={6} lg={3} key={i}>
+                <div className={styles.card}>
+                  <img
+                    src={kategori.image ? `/images/${kategori.image.name}` : ""}
+                    alt=""
+                  />
+                  <h3>{kategori.nama_kategori}</h3>
+                </div>
+              </Grid>
+            ))}
+        </Grid>
       </div>
     </div>
   );
