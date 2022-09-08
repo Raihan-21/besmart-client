@@ -44,7 +44,7 @@ const Kelas = () => {
   const [tabValue, setTabValue] = useState(0);
   const [validLog, setValidLog] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [year, setYear] = useState(new Date());
   const [chartData, setChartData] = useState({
     labels: ["Januari", "Februari"],
     datasets: [{}],
@@ -91,6 +91,26 @@ const Kelas = () => {
       return <div className="text-center">Kamu sudah absen hari ini</div>;
     else return <div className="text-center">Hari ini bukan jadwal kamu</div>;
   };
+  const filterDate = useCallback(
+    async (value) => {
+      setYear(value);
+      const formattedYear = new Date(value).getFullYear();
+      const res = await axios.get(
+        `/api/kelas/${user.username}?filter[year]=${formattedYear}`
+      );
+      setChartData({
+        labels: res.data.data.statistics.map((item) => item.bulan),
+        datasets: [
+          {
+            label: "kehadiran",
+            borderColor: "#64b5f6",
+            data: res.data.data.statistics.map((item) => item.total),
+          },
+        ],
+      });
+    },
+    [user]
+  );
   return (
     <div className={styles.userContainer}>
       <h3 className="text-left">Kelas</h3>
@@ -132,18 +152,15 @@ const Kelas = () => {
           ) : (
             <div className="text-center">Hari ini bukan jadwal kamu</div>
           )} */}
-              <div className="space-y-4">
-                <h4>Statistik kehadiran</h4>
+              <div className="space-y-4 flex flex-column align-right">
+                <h4 className="w-full">Statistik kehadiran</h4>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DatePicker
                     views={["year"]}
                     value={year}
                     ampm="false"
-                    inputFormat="yyyy-mm-dd"
-                    onChange={(value) => {
-                      console.log(value);
-                      setYear(value);
-                    }}
+                    inputFormat="yyyy"
+                    onChange={filterDate}
                     renderInput={(params) => (
                       <TextField {...params} size="small" />
                     )}

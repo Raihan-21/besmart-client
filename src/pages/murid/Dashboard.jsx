@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className={`text-left ${styles.userContainer}`}>
       <h3>Dashboard</h3>
-      <div class="space-y-4">
+      <div className="space-y-4">
         {!isLoading &&
           data.map((item, i) => (
             <div key={i}>

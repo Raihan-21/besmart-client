@@ -1,10 +1,10 @@
 import { TextField, Button } from "@mui/material";
-import styles from "../assets/styles/Login.module.css";
+import styles from "../assets/styles/Login.module.scss";
 import { useState, useCallback } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../slices/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState({ username: "", password: "" });
@@ -68,6 +68,10 @@ const Login = () => {
               }));
             }}
           />
+          <div className={`${styles.loginHelper} text-left`}>
+            Jika anda guru, klik <Link to="/guru/login"> disini </Link> untuk
+            masuk
+          </div>
           <Button type="submit" variant="contained" className={styles.loginBtn}>
             Masuk
           </Button>

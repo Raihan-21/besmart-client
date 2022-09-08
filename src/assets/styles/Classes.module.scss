@@ -1,6 +1,7 @@
 .classContainer{
     padding: 100px 100px 200px 100px;
     .classes {
+        margin-top: 50px;
         img{
         height: 250px;
         width: 250px;
@@ -12,9 +13,15 @@
                 flex-direction: column;
             }
         }
+        .btnBeli{
+            margin-right: auto;
+        }
+
 
     }
 }
-
+.harga{
+    margin-left: 5px;
+}
 }
 

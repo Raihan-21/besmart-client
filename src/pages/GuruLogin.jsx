@@ -1,5 +1,5 @@
 import { TextField, Button } from "@mui/material";
-import styles from "../assets/styles/Login.module.css";
+import styles from "../assets/styles/Login.module.scss";
 import { useState, useCallback } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -27,10 +27,10 @@ const GuruLogin = () => {
   return (
     <div className={`auth-form ${styles.login}`}>
       <form onSubmit={loginHandler}>
-        <h2 className={styles.h2}>Masuk</h2>
+        <h2 className={styles.h2}>Masuk (Guru)</h2>
         <TextField
           label="Username"
-          variant="standard"
+          variant="outlined"
           fullWidth
           margin="normal"
           error={error.username ? true : false}
@@ -45,7 +45,7 @@ const GuruLogin = () => {
         />
         <TextField
           label="Password"
-          variant="standard"
+          variant="outlined"
           fullWidth
           margin="normal"
           type="password"

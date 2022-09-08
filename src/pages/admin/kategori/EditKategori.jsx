@@ -13,6 +13,7 @@ const EditKategori = () => {
       const formData = new FormData();
       formData.append("nama_kategori", data.nama_kategori);
       formData.append("deskripsi", data.deskripsi);
+      formData.append("biaya", parseInt(data.biaya));
       formData.append("image", data.image);
       try {
         const res = await axios.put(

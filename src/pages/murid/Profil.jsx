@@ -67,7 +67,7 @@ const Profil = () => {
         {!isLoading && (
           <form className="space-y-4" onSubmit={formHandler}>
             <Grid container columnSpacing={2} rowSpacing={3}>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   label="Username"
                   fullWidth
@@ -82,7 +82,7 @@ const Profil = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   label="Nama Lengkap"
                   fullWidth
@@ -94,7 +94,7 @@ const Profil = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   label="Alamat"
                   fullWidth
@@ -108,7 +108,7 @@ const Profil = () => {
                   }}
                 />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   label="No Hp"
                   fullWidth

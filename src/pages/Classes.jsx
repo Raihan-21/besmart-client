@@ -11,10 +11,21 @@ const Classes = () => {
       return (
         <>
           <img src={data.image ? `/images/${data.image.name}` : ""} alt="" />
-          <div className={`${styles.content} space-y-4`}>
+          <div
+            className={`${styles.content} space-y-4 flex flex-column align-left`}
+          >
             <h3>{data.nama_kategori}</h3>
-            <p>{data.deskripsi}</p>
-            <Link to="/register">
+            <p className="text-left">{data.deskripsi}</p>
+            <h4>
+              Biaya:
+              <span className={styles.harga}>
+                {new Intl.NumberFormat("id-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                }).format(data.biaya)}
+              </span>
+            </h4>
+            <Link to="/register" className={styles.btnBeli}>
               <Button variant="contained"> Ambil Kelas</Button>
             </Link>
           </div>
@@ -23,10 +34,21 @@ const Classes = () => {
     else
       return (
         <>
-          <div className={`${styles.content} space-y-4`}>
+          <div
+            className={`${styles.content} space-y-4 flex flex-column align-left`}
+          >
             <h3>{data.nama_kategori}</h3>
-            <p>{data.deskripsi}</p>
-            <Link to="/register">
+            <p className="text-left">{data.deskripsi}</p>
+            <h4>
+              Biaya:
+              <span className={styles.harga}>
+                {new Intl.NumberFormat("id-ID", {
+                  style: "currency",
+                  currency: "IDR",
+                }).format(data.biaya)}
+              </span>
+            </h4>
+            <Link to="/register" className={styles.btnBeli}>
               <Button variant="contained"> Ambil Kelas</Button>
             </Link>
           </div>
@@ -39,7 +61,7 @@ const Classes = () => {
     <div className={`container ${styles.classContainer}`}>
       <h2 className="text-left">Seluruh Kelas Kami</h2>
       <div className={styles.classes}>
-        <Grid container justifyContent="center" rowSpacing={3}>
+        <Grid container justifyContent="center" rowSpacing={7}>
           {!isLoading &&
             data.map((item, i) => (
               <Grid item xs={8} key={i}>

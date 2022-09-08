@@ -1,7 +1,7 @@
 import styles from "../../../assets/styles/Admin.module.scss";
 import { Button, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
-import { Grid, Input } from "@mui/material";
+import { Grid } from "@mui/material";
 
 const FormKategori = ({ formData, onSubmit }) => {
   const [data, setData] = useState({});
@@ -17,7 +17,7 @@ const FormKategori = ({ formData, onSubmit }) => {
             onSubmit(data);
           }}
         >
-          <Grid container columnSpacing={2} rowSpacing={3}>
+          <Grid container columnSpacing={2}>
             <Grid item sm={6} xs={12}>
               <TextField
                 label="Nama Kategori"
@@ -52,27 +52,36 @@ const FormKategori = ({ formData, onSubmit }) => {
                 }}
               />
             </Grid>
+            <Grid item sm={6} xs={12}>
+              <TextField
+                label="Biaya"
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                required
+                value={data ? (data.biaya ? data.biaya : "") : ""}
+                onChange={(e) => {
+                  setData((prevState) => {
+                    return { ...prevState, biaya: e.target.value };
+                  });
+                }}
+              />
+            </Grid>
             <Grid item xs={12} sm={6}>
               <Grid container>
-                <Grid item xs={3}>
-                  {" "}
-                  <Button variant="contained" component="label">
+                <Grid item xs={6} sm={6} md={3}>
+                  <Button
+                    variant="contained"
+                    component="label"
+                    sx={{ marginTop: "35%", transform: "translateY(-50%)" }}
+                  >
                     Upload
                     <input
                       hidden
-                      // width={"100%"}
                       name="image"
                       type="file"
                       accept="image/*"
-                      required
-                      // fullWidth
-                      // inputProps={{
-                      //   accept: ["image/png", " image/gif", "image/jpeg"],
-                      // }}
-                      // value={{
-                      //   name: "admin.drawio.png",
-                      //   type: "image/png",
-                      // }}
+                      // required
                       onChange={(e) => {
                         setData((prevState) => {
                           console.log(e.target.files[0]);
@@ -82,9 +91,11 @@ const FormKategori = ({ formData, onSubmit }) => {
                     />
                   </Button>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} sm={6} md={6}>
                   {data && data.image && (
-                    <div className="text-left">{data.image.name}</div>
+                    <div className={`${styles.imgName} text-left`}>
+                      {data.image.name}
+                    </div>
                   )}
                 </Grid>
               </Grid>

@@ -3,6 +3,7 @@ const initialState = {
   loggedIn: false,
   user: {},
   guru: {},
+  isSidebarOpen: false,
 };
 const userSlice = createSlice({
   name: "profile",
@@ -39,6 +40,10 @@ const userSlice = createSlice({
     setName: (state, { payload }) => {
       state.user.name = payload;
     },
+    setSidebar: (state, { payload }) => {
+      if (payload === "open") state.isSidebarOpen = true;
+      else state.isSidebarOpen = false;
+    },
   },
 });
 export const {
@@ -49,5 +54,6 @@ export const {
   setToken,
   getUser,
   setName,
+  setSidebar,
 } = userSlice.actions;
 export default userSlice.reducer;
